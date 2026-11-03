@@ -686,6 +686,8 @@ export const he = {
     plainText: "עורך טקסט פשוט",
     plainTextDescription:
       "שמור קוד, Markdown וקישורים כטקסט מילולי. כבה כדי להציג תצוגה מקדימה מעוצבת.",
+    richPaste: "הדבקת טקסט מעוצב",
+    richPasteDescription: "מדביק קישורים, טבלאות ועיצוב כ-Markdown. {shortcut} מדביק טקסט פשוט. עורך טקסט עשיר מלא בקרוב.",
     showContext: "שימוש בחלון ההקשר",
     sendShortcut: "קיצור שליחה",
     sendMultiline: "{mod} + Enter להנחיות מרובות שורות",
@@ -1095,6 +1097,7 @@ export const he = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "יש להגדיר את סיסמת בעל ההתקנה לפני הוספת חשבון נוסף. הסיסמה תשמש לכניסה לאחר שיהיו בהתקנה כמה חשבונות.",
       signsInAs: "מתחבר בתור {username}",
       signsInAsOwner: "מתחבר בתור {alias} או {username}",
       signInName: "שם ההתחברות שלך",
@@ -1979,6 +1982,7 @@ export const he = {
         loadError: "טעינת הגדרות ההחלפה האוטומטית של מודלים נכשלה.",
         saveError: "שמירת הגדרות ההחלפה האוטומטית של מודלים נכשלה.",
         idleError: "הזן 0 כדי לשמור את המודל טעון, או לפחות 60 שניות.",
+        idleUnsaved: "עדיין לא נשמר.",
         keepKv: "שמור הקשר צ'אט על פני פריקות",
         keepKvDescription:
           "שמור את מטמון ה-KV לפני פריקה בחוסר פעילות, או לפני שמודל תמונה או וידאו תופס את ה-GPU, כדי שצ'אטים שיחודשו ידלגו על קריאה מחדש של ההיסטוריה. עד 10 GB בדיסק.",

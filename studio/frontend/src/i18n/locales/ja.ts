@@ -653,6 +653,8 @@ export const ja = {
     title: "入力欄",
     plainText: "プレーンテキスト入力",
     plainTextDescription: "コード、Markdown、リンクをそのままのテキストで表示します。オフにすると書式付きプレビューを表示します。",
+    richPaste: "書式付きテキストの貼り付け",
+    richPasteDescription: "リンク、表、書式を Markdown として貼り付けます。{shortcut} でプレーンテキスト。完全なリッチテキスト入力欄は近日公開。",
     showContext: "コンテキストウィンドウの使用量を表示",
     sendShortcut: "送信ショートカット",
     sendMultiline: "複数行のメッセージは {mod} + Enter",
@@ -1060,6 +1062,7 @@ export const ja = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "別のアカウントを追加する前に、所有者のパスワードを設定してください。このインストール環境に複数のアカウントがある場合は、そのパスワードでサインインします。",
       signsInAs: "{username} としてサインイン",
       signsInAsOwner: "{alias} または {username} としてサインイン",
       signInName: "サインイン名",
@@ -1913,6 +1916,7 @@ export const ja = {
         loadError: "モデル自動切り替え設定の読み込みに失敗しました。",
         saveError: "モデル自動切り替え設定の保存に失敗しました。",
         idleError: "モデルを読み込んだままにするには 0 を、それ以外は 60 秒以上を入力してください。",
+        idleUnsaved: "まだ保存されていません。",
         autoDownload: "不足しているモデルをダウンロード",
         autoDownloadDescription:
           "API リクエストで指定された未ダウンロードの GGUF を取得します。API キーを持つ人なら誰でもディスクと帯域を消費できるようになります。",

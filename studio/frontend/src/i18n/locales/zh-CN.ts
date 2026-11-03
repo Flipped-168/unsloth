@@ -652,6 +652,8 @@ export const zhCN = {
     title: "消息输入",
     plainText: "纯文本输入",
     plainTextDescription: "将代码、Markdown 和链接保留为原始文本。关闭后显示格式化预览。",
+    richPaste: "粘贴富文本",
+    richPasteDescription: "将链接、表格和格式粘贴为 Markdown。{shortcut} 粘贴纯文本。完整的富文本输入框即将推出。",
     showContext: "显示上下文窗口使用量",
     sendShortcut: "发送快捷键",
     sendMultiline: "多行消息使用 {mod} + Enter",
@@ -1056,6 +1058,7 @@ export const zhCN = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "添加其他账户前，请先设置此安装实例所有者的密码。此安装实例有多个账户后，你将使用该密码登录。",
       signsInAs: "以 {username} 登录",
       signsInAsOwner: "以 {alias} 或 {username} 登录",
       signInName: "你的登录名",
@@ -1902,6 +1905,7 @@ export const zhCN = {
         loadError: "加载模型自动切换设置失败。",
         saveError: "保存模型自动切换设置失败。",
         idleError: "输入 0 保持模型加载，或输入至少 60 秒。",
+        idleUnsaved: "尚未保存。",
         autoDownload: "下载缺失的模型",
         autoDownloadDescription:
           "获取 API 请求中指定但尚未下载的 GGUF。开启后，任何持有 API 密钥的人都可以占用你的磁盘空间和带宽。",

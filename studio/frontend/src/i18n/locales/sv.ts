@@ -695,6 +695,8 @@ export const sv = {
     plainText: "Skrivfält med oformaterad text",
     plainTextDescription:
       "Behåll kod, Markdown och länkar som ren text. Stäng av för att visa en formaterad förhandsvisning.",
+    richPaste: "Klistra in formaterad text",
+    richPasteDescription: "Klistrar in länkar, tabeller och formatering som Markdown. {shortcut} klistrar in oformaterad text. Fullständig redigerare för formaterad text kommer snart.",
     showContext: "Användning av kontextfönstret",
     sendShortcut: "Kortkommando för att skicka",
     sendMultiline: "{mod} + Enter för uppmaningar med flera rader",
@@ -1114,6 +1116,7 @@ export const sv = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "Välj installationsägarens lösenord innan du lägger till ett konto till. Du använder det för att logga in när installationen har flera konton.",
       signsInAs: "Loggar in som {username}",
       signsInAsOwner: "Loggar in som {alias} eller {username}",
       signInName: "Ditt inloggningsnamn",
@@ -2035,6 +2038,7 @@ export const sv = {
           "Det gick inte att spara inställningarna för automatiskt modellbyte.",
         idleError:
           "Ange 0 för att behålla modellen inläst, eller minst 60 sekunder.",
+        idleUnsaved: "Inte sparat ännu.",
         keepKv: "Behåll chattkontext mellan avlastningar",
         keepKvDescription:
           "Spara KV-cachen före en avlastning efter inaktivitet, eller innan en bild- eller videomodell tar över GPU:n, så att återupptagna chattar slipper läsa historiken igen. Upp till 10 GB på disk.",

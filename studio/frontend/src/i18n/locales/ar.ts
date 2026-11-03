@@ -652,6 +652,8 @@ export const ar = {
     title: "كتابة الرسائل",
     plainText: "محرر نص عادي",
     plainTextDescription: "إبقاء التعليمات البرمجية وMarkdown والروابط كنص حرفي. عطّل هذا الخيار لعرض معاينة منسقة.",
+    richPaste: "لصق النص المنسّق",
+    richPasteDescription: "يلصق الروابط والجداول والتنسيق بصيغة Markdown. {shortcut} يلصق نصًا عاديًا. محرر نص منسق كامل قريبًا.",
     showContext: "إظهار استخدام نافذة السياق",
     sendShortcut: "اختصار الإرسال",
     sendMultiline: "{mod} + Enter للرسائل متعددة الأسطر",
@@ -1058,6 +1060,7 @@ export const ar = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "اختر كلمة مرور مالك التثبيت قبل إضافة حساب آخر. ستستخدمها لتسجيل الدخول عندما يحتوي هذا التثبيت على عدة حسابات.",
       signsInAs: "يسجّل الدخول باسم {username}",
       signsInAsOwner: "يسجّل الدخول باسم {alias} أو {username}",
       signInName: "اسم تسجيل الدخول",
@@ -1921,6 +1924,7 @@ export const ar = {
         loadError: "فشل تحميل إعدادات التبديل التلقائي للنموذج.",
         saveError: "فشل حفظ إعدادات التبديل التلقائي للنموذج.",
         idleError: "أدخل 0 لإبقاء النموذج محمَّلاً، أو 60 ثانية على الأقل.",
+        idleUnsaved: "لم يُحفظ بعد.",
         autoDownload: "تنزيل النماذج غير المنزَّلة",
         autoDownloadDescription:
           "يجلب ملف GGUF المذكور في طلب واجهة API إذا لم يكن منزَّلًا بعد. عندئذٍ يمكن لأي شخص لديه مفتاح API استهلاك مساحة القرص وعرض النطاق.",

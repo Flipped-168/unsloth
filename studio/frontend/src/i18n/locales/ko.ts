@@ -652,6 +652,8 @@ export const ko = {
     title: "메시지 입력",
     plainText: "일반 텍스트 입력",
     plainTextDescription: "코드, Markdown, 링크를 원문 그대로 표시합니다. 끄면 서식 미리보기를 표시합니다.",
+    richPaste: "서식 있는 텍스트 붙여넣기",
+    richPasteDescription: "링크, 표, 서식을 Markdown으로 붙여넣습니다. {shortcut}는 일반 텍스트로 붙여넣습니다. 완전한 서식 입력창은 곧 제공됩니다.",
     showContext: "컨텍스트 창 사용량 표시",
     sendShortcut: "전송 단축키",
     sendMultiline: "여러 줄 메시지는 {mod} + Enter",
@@ -1058,6 +1060,7 @@ export const ko = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "다른 계정을 추가하기 전에 설치 소유자의 비밀번호를 설정하세요. 이 설치에 계정이 여러 개 있으면 이 비밀번호로 로그인하게 됩니다.",
       signsInAs: "{username}(으)로 로그인",
       signsInAsOwner: "{alias} 또는 {username}(으)로 로그인",
       signInName: "로그인 이름",
@@ -1918,6 +1921,7 @@ export const ko = {
         loadError: "모델 자동 전환 설정을 불러오지 못했습니다.",
         saveError: "모델 자동 전환 설정을 저장하지 못했습니다.",
         idleError: "모델을 로드 상태로 유지하려면 0을, 그렇지 않으면 60초 이상을 입력하세요.",
+        idleUnsaved: "아직 저장되지 않았습니다.",
         autoDownload: "아직 받지 않은 모델 다운로드",
         autoDownloadDescription:
           "API 요청에 지정된 GGUF 모델이 아직 다운로드되어 있지 않으면 해당 모델을 자동으로 다운로드합니다. 이 기능을 사용하면 API 키를 가진 사용자가 디스크 공간과 네트워크 대역폭을 사용할 수 있습니다.",

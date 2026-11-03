@@ -649,6 +649,8 @@ export const en = {
     title: "Composer",
     plainText: "Plain text composer",
     plainTextDescription: "Keep code, Markdown, and links as literal text. Turn off to show a formatted preview.",
+    richPaste: "Rich text paste",
+    richPasteDescription: "Pastes links, tables and formatting as Markdown. {shortcut} pastes plain text. Full rich text composer coming soon.",
     showContext: "Context window usage",
     sendShortcut: "Send shortcut",
     sendMultiline: "{mod} + Enter for multiline prompts",
@@ -1067,6 +1069,7 @@ export const en = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "Choose the owner's password before adding another account. You will use it to sign in once this installation has multiple accounts.",
       signsInAs: "Signs in as {username}",
       signsInAsOwner: "Signs in as {alias} or {username}",
       signInName: "Your sign-in name",
@@ -1936,6 +1939,7 @@ export const en = {
         loadError: "Failed to load model auto-switch settings.",
         saveError: "Failed to save model auto-switch settings.",
         idleError: "Enter 0 to keep the model loaded, or at least 60 seconds.",
+        idleUnsaved: "Not saved yet.",
         keepKv: "Keep chat context across unloads",
         keepKvDescription:
           "Save the KV cache before an idle unload, or before an image or video model takes the GPU, so resumed chats skip re-reading history. Up to 10 GB on disk.",

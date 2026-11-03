@@ -652,6 +652,8 @@ export const ptBR = {
     title: "Composição de mensagens",
     plainText: "Composição em texto simples",
     plainTextDescription: "Manter código, Markdown e links como texto literal. Desative para mostrar uma prévia formatada.",
+    richPaste: "Colar texto formatado",
+    richPasteDescription: "Cola links, tabelas e formatação como Markdown. {shortcut} cola texto simples. Editor de texto formatado completo em breve.",
     showContext: "Mostrar uso da janela de contexto",
     sendShortcut: "Atalho de envio",
     sendMultiline: "{mod} + Enter para mensagens de várias linhas",
@@ -1061,6 +1063,7 @@ export const ptBR = {
   },
   settings: {
     accounts: {
+      ownerPasswordDescription: "Defina a senha do proprietário da instalação antes de adicionar outra conta. Você usará essa senha para entrar quando esta instalação tiver várias contas.",
       signsInAs: "Entra como {username}",
       signsInAsOwner: "Entra como {alias} ou {username}",
       signInName: "Seu nome de login",
@@ -1927,6 +1930,7 @@ export const ptBR = {
         loadError: "Falha ao carregar as configurações de troca automática de modelo.",
         saveError: "Falha ao salvar as configurações de troca automática de modelo.",
         idleError: "Insira 0 para manter o modelo carregado, ou pelo menos 60 segundos.",
+        idleUnsaved: "Ainda não salvo.",
         autoDownload: "Baixar modelos ausentes",
         autoDownloadDescription:
           "Busca um GGUF indicado em uma requisição da API que ainda não foi baixado. Com isso, qualquer pessoa com uma chave de API pode consumir disco e largura de banda.",
