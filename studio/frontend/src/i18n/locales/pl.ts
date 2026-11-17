@@ -2421,6 +2421,15 @@ export const pl = {
         saveError:
           "Nie udało się zaktualizować ustawienia uruchamiania po zalogowaniu.",
       },
+      power: {
+        sectionTitle: "Zasilanie",
+        keepAwake: "Nie usypiaj komputera",
+        keepAwakeDescription:
+          "Zapobiega samoczynnemu przejściu komputera w tryb uśpienia, gdy Unsloth działa. Ekran nadal może się wyłączyć.",
+        keepAwakeKeywords: "uśpienie hibernacja wstrzymanie zasilanie sleep caffeinate",
+        loadError: "Nie udało się wczytać ustawienia nieusypiania komputera.",
+        saveError: "Nie udało się zaktualizować ustawienia nieusypiania komputera.",
+      },
       hub: {
         source: "Źródło modeli",
         sourceDescription:
@@ -3901,6 +3910,12 @@ export const pl = {
       createToken: "Utwórz token",
       neverExpiresHint: "Nigdy nie wygasa",
       expiresInDaysHint: "Wygasa za {n} dni",
+      accessFull: "Pełny dostęp",
+      accessInference: "Tylko inferencja",
+      accessFullHint: "Może korzystać z całego API Unsloth, w tym wczytywać, pobierać i usuwać modele",
+      accessInferenceHint: "Może rozmawiać z wczytanymi modelami i je wyświetlać, ale nie może wczytywać, zwalniać ani pobierać modeli ani zmieniać ustawień",
+      accessInferenceBadge: "Inferencja",
+      accessError: "Nie udało się zmienić dostępu tego klucza",
       createTokenHint: "Utwórz token o nazwie „{name}”",
       defaultTokenName: "Nowy token {n}",
       creating: "Tworzenie...",

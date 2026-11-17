@@ -2279,6 +2279,15 @@ export const zhTW = {
         loadError: "無法載入「登入時啟動」設定。",
         saveError: "無法更新「登入時啟動」設定。",
       },
+      power: {
+        sectionTitle: "電源",
+        keepAwake: "讓電腦保持喚醒",
+        keepAwakeDescription:
+          "在 Unsloth 執行期間防止這台電腦自動進入睡眠。螢幕仍可關閉。",
+        keepAwakeKeywords: "睡眠 休眠 待機 暫停 電源 sleep caffeinate",
+        loadError: "無法載入讓電腦保持喚醒設定。",
+        saveError: "無法更新讓電腦保持喚醒設定。",
+      },
       hub: {
         source: "模型來源",
         sourceDescription:
@@ -3675,6 +3684,12 @@ export const zhTW = {
       createToken: "建立權杖",
       neverExpiresHint: "永不到期",
       expiresInDaysHint: "{n} 天後到期",
+      accessFull: "完整存取",
+      accessInference: "僅推論",
+      accessFullHint: "可以使用整個 Unsloth API，包括載入、下載和刪除模型",
+      accessInferenceHint: "可以與已載入的模型對話並列出它們，但不能載入、卸載或下載模型，也不能變更設定",
+      accessInferenceBadge: "推論",
+      accessError: "無法變更此金鑰的存取權限",
       createTokenHint: "建立名為「{name}」的權杖",
       defaultTokenName: "新權杖 {n}",
       creating: "正在建立...",

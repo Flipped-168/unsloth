@@ -2208,6 +2208,15 @@ export const ptBR = {
         saveError:
           "Não foi possível atualizar a configuração de inicialização no login.",
       },
+      power: {
+        sectionTitle: "Energia",
+        keepAwake: "Manter o computador ativo",
+        keepAwakeDescription:
+          "Impede que este computador entre em suspensão sozinho enquanto o Unsloth estiver em execução. A tela ainda pode se apagar.",
+        keepAwakeKeywords: "suspensão repouso hibernar energia sleep caffeinate",
+        loadError: "Não foi possível carregar a configuração de manter o computador ativo.",
+        saveError: "Não foi possível atualizar a configuração de manter o computador ativo.",
+      },
       hub: {
         source: "Origem dos modelos",
         sourceDescription: "Onde o hub de modelos pesquisa e baixa. Escolha ModelScope se o Hugging Face estiver bloqueado ou lento na sua rede.",
@@ -3677,6 +3686,12 @@ export const ptBR = {
       createToken: "Criar token",
       neverExpiresHint: "Nunca expira",
       expiresInDaysHint: "Expira em {n} dias",
+      accessFull: "Acesso total",
+      accessInference: "Somente inferência",
+      accessFullHint: "Pode usar toda a API do Unsloth, incluindo carregar, baixar e excluir modelos",
+      accessInferenceHint: "Pode conversar com os modelos carregados e listá-los, mas não pode carregar, descarregar ou baixar modelos nem alterar configurações",
+      accessInferenceBadge: "Inferência",
+      accessError: "Não foi possível alterar o acesso desta chave",
       createTokenHint: 'Criar um token chamado "{name}"',
       defaultTokenName: "Novo token {n}",
       creating: "Criando...",

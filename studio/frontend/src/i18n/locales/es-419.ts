@@ -2425,6 +2425,15 @@ export const es419 = {
         saveError:
           "No se pudo actualizar la opción de ejecutar al iniciar sesión.",
       },
+      power: {
+        sectionTitle: "Energía",
+        keepAwake: "Mantener la computadora activa",
+        keepAwakeDescription:
+          "Evita que esta computadora entre en suspensión por sí sola mientras Unsloth está en ejecución. La pantalla puede apagarse de todos modos.",
+        keepAwakeKeywords: "suspensión reposo hibernar energía sleep caffeinate",
+        loadError: "No se pudo cargar la opción de mantener la computadora activa.",
+        saveError: "No se pudo actualizar la opción de mantener la computadora activa.",
+      },
       hub: {
         source: "Origen de los modelos",
         sourceDescription:
@@ -3913,6 +3922,12 @@ export const es419 = {
       createToken: "Crear token",
       neverExpiresHint: "Nunca vence",
       expiresInDaysHint: "Vence en {n} días",
+      accessFull: "Acceso completo",
+      accessInference: "Solo inferencia",
+      accessFullHint: "Puede usar toda la API de Unsloth, incluido cargar, descargar y eliminar modelos",
+      accessInferenceHint: "Puede chatear con los modelos cargados y listarlos, pero no puede cargar, descargar ni quitar modelos ni cambiar la configuración",
+      accessInferenceBadge: "Inferencia",
+      accessError: "No se pudo cambiar el acceso de esta clave",
       createTokenHint: 'Crear un token llamado "{name}"',
       defaultTokenName: "Token nuevo {n}",
       creating: "Creando...",

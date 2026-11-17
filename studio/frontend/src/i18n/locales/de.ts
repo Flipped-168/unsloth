@@ -2220,6 +2220,15 @@ export const de = {
         saveError:
           "Die Autostart-Einstellung konnte nicht aktualisiert werden.",
       },
+      power: {
+        sectionTitle: "Energie",
+        keepAwake: "Computer wach halten",
+        keepAwakeDescription:
+          "Verhindert, dass dieser Computer von selbst in den Ruhezustand wechselt, solange Unsloth läuft. Der Bildschirm kann sich trotzdem ausschalten.",
+        keepAwakeKeywords: "ruhezustand schlafen standby energiesparen sleep caffeinate",
+        loadError: "Die Einstellung „Computer wach halten“ konnte nicht geladen werden.",
+        saveError: "Die Einstellung „Computer wach halten“ konnte nicht aktualisiert werden.",
+      },
       hub: {
         source: "Modellquelle",
         sourceDescription: "Wo der Model-Hub sucht und herunterlädt. Wählen Sie ModelScope, wenn Hugging Face in Ihrem Netzwerk blockiert oder langsam ist.",
@@ -3709,6 +3718,12 @@ export const de = {
       createToken: "Token erstellen",
       neverExpiresHint: "Läuft nie ab",
       expiresInDaysHint: "Läuft in {n} Tagen ab",
+      accessFull: "Vollzugriff",
+      accessInference: "Nur Inferenz",
+      accessFullHint: "Kann die gesamte Unsloth API nutzen, einschließlich Laden, Herunterladen und Löschen von Modellen",
+      accessInferenceHint: "Kann mit geladenen Modellen chatten und sie auflisten, aber keine Modelle laden, entladen oder herunterladen und keine Einstellungen ändern",
+      accessInferenceBadge: "Inferenz",
+      accessError: "Zugriff dieses Schlüssels konnte nicht geändert werden",
       createTokenHint: "Token „{name}“ erstellen",
       defaultTokenName: "Neues Token {n}",
       creating: "Wird erstellt...",

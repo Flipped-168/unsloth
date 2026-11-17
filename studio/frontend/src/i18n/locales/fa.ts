@@ -2381,6 +2381,15 @@ export const fa = {
         loadError: "بارگذاری تنظیم «اجرا هنگام ورود به سیستم» ناموفق بود.",
         saveError: "به‌روزرسانی تنظیم «اجرا هنگام ورود به سیستم» ناموفق بود.",
       },
+      power: {
+        sectionTitle: "انرژی",
+        keepAwake: "بیدار نگه داشتن رایانه",
+        keepAwakeDescription:
+          "تا وقتی Unsloth در حال اجراست، از رفتن خودکار این رایانه به حالت خواب جلوگیری می‌کند. نمایشگر همچنان می‌تواند خاموش شود.",
+        keepAwakeKeywords: "خواب تعلیق آماده‌به‌کار انرژی sleep caffeinate",
+        loadError: "بارگیری تنظیم بیدار نگه داشتن رایانه ناموفق بود.",
+        saveError: "به‌روزرسانی تنظیم بیدار نگه داشتن رایانه ناموفق بود.",
+      },
       hub: {
         source: "منبع مدل",
         sourceDescription:
@@ -3843,6 +3852,12 @@ export const fa = {
       createToken: "ایجاد توکن",
       neverExpiresHint: "هرگز منقضی نمی‌شود",
       expiresInDaysHint: "تا {n} روز دیگر منقضی می‌شود",
+      accessFull: "دسترسی کامل",
+      accessInference: "فقط استنتاج",
+      accessFullHint: "می‌تواند از کل API ‏Unsloth استفاده کند، از جمله بارگذاری، دانلود و حذف مدل‌ها",
+      accessInferenceHint: "می‌تواند با مدل‌های بارگذاری‌شده گفتگو کند و آن‌ها را فهرست کند، اما نمی‌تواند مدل‌ها را بارگذاری، تخلیه یا دانلود کند یا تنظیمات را تغییر دهد",
+      accessInferenceBadge: "استنتاج",
+      accessError: "تغییر دسترسی این کلید ممکن نشد",
       createTokenHint: "ایجاد توکنی با نام «{name}»",
       defaultTokenName: "توکن جدید {n}",
       creating: "در حال ایجاد...",

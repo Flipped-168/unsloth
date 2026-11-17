@@ -2925,6 +2925,13 @@ def _normalize_sandbox_level(value: Any) -> Any:
     return value
 
 
+def _canonical_tool_names(value: Optional[list[str]]) -> Optional[list[str]]:
+    # The curl guide published ``bash`` for the built-in shell tool, whose real name is ``terminal``.
+    if value is None:
+        return None
+    return ["terminal" if name == "bash" else name for name in value]
+
+
 _SANDBOX_LEVEL_DESCRIPTION = (
     "[x-unsloth] Sandbox level for the Python and Terminal tools. 'high' (default) runs them "
     "in the OS sandbox when it works and on software safeguards otherwise. 'low' runs them on "
@@ -3162,6 +3169,7 @@ class ChatCompletionRequest(BaseModel):
             "server-side tools are forwarded."
         ),
     )
+    _canonical_enabled_tools = field_validator("enabled_tools")(_canonical_tool_names)
     mcp_enabled: Optional[bool] = Field(
         None,
         description = "[x-unsloth] When true, append tools from every enabled MCP server to this request's tool list.",
@@ -3704,6 +3712,7 @@ class ChatCountTokensRequest(ReasoningControlsRequest):
         None,
         description = "[x-unsloth] List of enabled built-in tool names",
     )
+    _canonical_enabled_tools = field_validator("enabled_tools")(_canonical_tool_names)
     mcp_enabled: Optional[bool] = Field(
         None,
         description = "[x-unsloth] Append tools from every enabled MCP server",
@@ -4607,6 +4616,7 @@ class AnthropicMessagesRequest(BaseModel):
     )
     enable_tools: Optional[bool] = None
     enabled_tools: Optional[list[str]] = None
+    _canonical_enabled_tools = field_validator("enabled_tools")(_canonical_tool_names)
     thinking: Optional[AnthropicThinkingConfig] = None
     # These win over `thinking` when both are present.
     enable_thinking: Optional[bool] = None
@@ -5552,8 +5562,9 @@ class DiffusionGenerateRequest(BaseModel):
         None,
         max_length = 8,
         description = "LoRA adapters to apply for this generation (by discovery id + weight). "
-        "Omitted/empty applies none and behaves exactly as before. Rejected with a clear "
-        "message when the loaded model or its quantisation can't apply LoRA.",
+        "Omitted: the adapters the model was loaded with (baked in, or named on a dense load), at "
+        "their load weights; none for a load that named none. An empty list applies none. "
+        "Rejected with a clear message when the loaded model or its quantisation can't apply LoRA.",
     )
     controlnet: Optional[ControlNetSpec] = Field(
         None,
@@ -6679,8 +6690,9 @@ class ImageGenerationRequest(BaseModel):
         None,
         max_length = 8,
         description = "[x-unsloth] LoRA adapters for this generation (discovery id + weight), as on "
-        "/images/generate. Omitted: the adapters the loaded model baked in at load time, at their "
-        "load weights (none for a load without baked adapters). An empty list renders without any.",
+        "/images/generate. Omitted: the adapters a diffusers load was loaded with (baked in, or applied "
+        "per generation on a dense build), at their load weights; none for a load that named none, and "
+        "none on the native sd.cpp and MLX engines. An empty list renders without any.",
     )
 
     @field_validator("n", "size", "response_format", mode = "before")
@@ -7553,6 +7565,16 @@ class VideoLoadRequest(BaseModel):
         "can exhaust memory, swap heavily, stop the server or make the computer unresponsive. Same "
         "effect as the server's UNSLOTH_DIFFUSION_ALLOW_OVERSIZED_LOAD=1, for this load only.",
     )
+    loras: Optional[list[LoraSpec]] = Field(
+        None,
+        max_length = 8,
+        description = "LoRA adapters to BAKE into the denoiser at load time, by discovery id (the same "
+        "catalog the Images load reads, family-gated by the adapter's sidecar). Each is merged into the "
+        "dense bfloat16 DiT before any quantisation, compile or offload, so changing the set or a weight "
+        "needs a reload. Needs a full diffusers pipeline load (no gguf_filename); skips any hosted "
+        "pre-quantized denoiser (the dense load peak is paid) and, on MiniMax-H3, pins the released "
+        "bfloat16 denoiser. null / empty / all weights 0 = a plain load.",
+    )
     speed_mode: Optional[Literal["off", "eager", "default", "max"]] = Field(
         None,
         description = "Opt-in speed optims (default off -> bit-identical output): "
@@ -7652,6 +7674,22 @@ class VideoLoadRequest(BaseModel):
         "ignored on XPU / MPS / CPU, which have no applicator for a physical index. Mirrors the "
         "image backend's field.",
     )
+
+    @field_validator("loras")
+    @classmethod
+    def _unique_video_lora_ids(
+        cls, value: Optional[list["LoraSpec"]]
+    ) -> Optional[list["LoraSpec"]]:
+        # Repeated ids would bake the same adapter twice, past the weight bound.
+        if value:
+            seen: set[str] = set()
+            for spec in value:
+                if spec.id in seen:
+                    raise ValueError(
+                        f"duplicate LoRA id '{spec.id}'; list each adapter at most once"
+                    )
+                seen.add(spec.id)
+        return value
 
     @field_validator("attention_backend", mode = "before")
     @classmethod
@@ -7933,6 +7971,11 @@ class GalleryVideo(BaseModel):
     offload_policy: Optional[str] = Field(
         None, description = "Offload policy actually engaged: none | group | model | sequential"
     )
+    baked_loras: list[str] = Field(
+        default_factory = list,
+        description = "Adapters baked into the denoiser at load time (VideoLoadRequest.loras); empty when "
+        "the load baked none or the clip predates the field",
+    )
     created_at: str = Field(..., description = "Creation time (ISO 8601 timestamp)")
     # Library state, not recipe: stored beside the clip, so older sidecars simply read as unset.
     pinned: bool = Field(False, description = "Pinned to the front of the gallery")
@@ -8201,6 +8244,20 @@ class VideoStatusResponse(BaseModel):
         description = "Why flashinfer is not serving an NVFP4 load that runs torchao: the on-demand "
         "install was refused (offline, opt-out, ineligible host) or failed and was rolled back. "
         "null when the backend is flashinfer, the scheme is not nvfp4, or no reason was recorded.",
+    )
+    baked_loras: list[str] = Field(
+        default_factory = list,
+        description = "Adapters baked into the denoiser at load time (VideoLoadRequest.loras), by "
+        "adapter name; empty when the load baked none",
+    )
+    baked_lora_specs: list[dict] = Field(
+        default_factory = list,
+        description = "The baked adapters as the load requested them, [{id, weight}]; empty when none",
+    )
+    lora_refusal: Optional[str] = Field(
+        None,
+        description = "Why a reload of this model with VideoLoadRequest.loras would be refused (GGUF or "
+        "single-file checkpoint, two-expert family); null when it can bake LoRAs or nothing is loaded",
     )
     text_encoder_quant: Optional[str] = Field(
         None,

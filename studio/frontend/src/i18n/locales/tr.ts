@@ -2386,6 +2386,15 @@ export const tr = {
         loadError: "Oturum açıldığında başlatma ayarı yüklenemedi.",
         saveError: "Oturum açıldığında başlatma ayarı güncellenemedi.",
       },
+      power: {
+        sectionTitle: "Güç",
+        keepAwake: "Bilgisayarı uyanık tut",
+        keepAwakeDescription:
+          "Unsloth çalışırken bu bilgisayarın kendiliğinden uyku moduna geçmesini engeller. Ekran yine de kapanabilir.",
+        keepAwakeKeywords: "uyku askıya alma bekleme hazırda bekletme güç sleep caffeinate",
+        loadError: "Bilgisayarı uyanık tut ayarı yüklenemedi.",
+        saveError: "Bilgisayarı uyanık tut ayarı güncellenemedi.",
+      },
       hub: {
         source: "Model kaynağı",
         sourceDescription:
@@ -3853,6 +3862,12 @@ export const tr = {
       createToken: "Token oluştur",
       neverExpiresHint: "Süresi hiç dolmaz",
       expiresInDaysHint: "{n} gün içinde süresi dolar",
+      accessFull: "Tam erişim",
+      accessInference: "Yalnızca çıkarım",
+      accessFullHint: "Modelleri yükleme, indirme ve silme dahil tüm Unsloth API'sini kullanabilir",
+      accessInferenceHint: "Yüklü modellerle sohbet edebilir ve onları listeleyebilir, ancak model yükleyemez, kaldıramaz, indiremez veya ayarları değiştiremez",
+      accessInferenceBadge: "Çıkarım",
+      accessError: "Bu anahtarın erişimi değiştirilemedi",
       createTokenHint: "“{name}” adlı bir token oluştur",
       defaultTokenName: "Yeni Token {n}",
       creating: "Oluşturuluyor...",

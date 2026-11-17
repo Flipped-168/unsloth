@@ -2196,6 +2196,15 @@ export const ar = {
         loadError: "تعذر تحميل إعداد التشغيل عند تسجيل الدخول.",
         saveError: "تعذر تحديث إعداد التشغيل عند تسجيل الدخول.",
       },
+      power: {
+        sectionTitle: "الطاقة",
+        keepAwake: "إبقاء الكمبيوتر مستيقظًا",
+        keepAwakeDescription:
+          "منع هذا الكمبيوتر من الدخول في وضع السكون تلقائيًا أثناء تشغيل Unsloth. يمكن أن تنطفئ الشاشة مع ذلك.",
+        keepAwakeKeywords: "سكون إسبات استعداد طاقة sleep caffeinate",
+        loadError: "تعذر تحميل إعداد إبقاء الكمبيوتر مستيقظًا.",
+        saveError: "تعذر تحديث إعداد إبقاء الكمبيوتر مستيقظًا.",
+      },
       hub: {
         source: "مصدر النماذج",
         sourceDescription: "المكان الذي يبحث فيه مركز النماذج ويُنزّل منه. اختر ModelScope إذا كان Hugging Face محظورًا أو بطيئًا على شبكتك.",
@@ -3663,6 +3672,12 @@ export const ar = {
       createToken: "إنشاء توكن",
       neverExpiresHint: "لا ينتهي أبدًا",
       expiresInDaysHint: "ينتهي خلال {n} يومًا",
+      accessFull: "وصول كامل",
+      accessInference: "الاستدلال فقط",
+      accessFullHint: "يمكنه استخدام واجهة Unsloth البرمجية كاملة، بما في ذلك تحميل النماذج وتنزيلها وحذفها",
+      accessInferenceHint: "يمكنه الدردشة مع النماذج المحمّلة وعرضها، لكنه لا يستطيع تحميل النماذج أو إلغاء تحميلها أو تنزيلها أو تغيير الإعدادات",
+      accessInferenceBadge: "الاستدلال",
+      accessError: "تعذّر تغيير صلاحية هذا المفتاح",
       createTokenHint: "إنشاء توكن باسم \"{name}\"",
       defaultTokenName: "توكن جديد {n}",
       creating: "جارٍ الإنشاء...",

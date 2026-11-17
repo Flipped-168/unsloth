@@ -2430,6 +2430,15 @@ export const nl = {
         saveError:
           "Kan de instelling voor starten bij inloggen niet bijwerken.",
       },
+      power: {
+        sectionTitle: "Energie",
+        keepAwake: "Computer wakker houden",
+        keepAwakeDescription:
+          "Voorkomt dat deze computer vanzelf in slaapstand gaat zolang Unsloth draait. Het scherm kan wel uitgaan.",
+        keepAwakeKeywords: "slaapstand sluimer stand-by energie sleep caffeinate",
+        loadError: "De instelling computer wakker houden kon niet worden geladen.",
+        saveError: "De instelling computer wakker houden kon niet worden bijgewerkt.",
+      },
       hub: {
         source: "Modelbron",
         sourceDescription:
@@ -3900,6 +3909,12 @@ export const nl = {
       createToken: "Token aanmaken",
       neverExpiresHint: "Verloopt nooit",
       expiresInDaysHint: "Verloopt over {n} dagen",
+      accessFull: "Volledige toegang",
+      accessInference: "Alleen inferentie",
+      accessFullHint: "Kan de volledige Unsloth API gebruiken, inclusief modellen laden, downloaden en verwijderen",
+      accessInferenceHint: "Kan chatten met geladen modellen en ze weergeven, maar kan geen modellen laden, ontladen of downloaden en geen instellingen wijzigen",
+      accessInferenceBadge: "Inferentie",
+      accessError: "Kan de toegang van deze sleutel niet wijzigen",
       createTokenHint: "Een token met de naam “{name}” aanmaken",
       defaultTokenName: "Nieuw token {n}",
       creating: "Aanmaken...",

@@ -2215,6 +2215,15 @@ export const es = {
         loadError: "No se pudo cargar el ajuste de inicio automático.",
         saveError: "No se pudo actualizar el ajuste de inicio automático.",
       },
+      power: {
+        sectionTitle: "Energía",
+        keepAwake: "Mantener el equipo activo",
+        keepAwakeDescription:
+          "Evita que este equipo entre en suspensión por sí solo mientras Unsloth está en ejecución. La pantalla puede apagarse igualmente.",
+        keepAwakeKeywords: "suspensión reposo hibernar energía sleep caffeinate",
+        loadError: "No se pudo cargar la opción de mantener el equipo activo.",
+        saveError: "No se pudo actualizar la opción de mantener el equipo activo.",
+      },
       hub: {
         source: "Origen de los modelos",
         sourceDescription: "Dónde busca y descarga el hub de modelos. Elige ModelScope si Hugging Face está bloqueado o es lento en tu red.",
@@ -3702,6 +3711,12 @@ export const es = {
       createToken: "Crear token",
       neverExpiresHint: "No caduca nunca",
       expiresInDaysHint: "Caduca en {n} días",
+      accessFull: "Acceso completo",
+      accessInference: "Solo inferencia",
+      accessFullHint: "Puede usar toda la API de Unsloth, incluido cargar, descargar y eliminar modelos",
+      accessInferenceHint: "Puede chatear con los modelos cargados y listarlos, pero no puede cargar, descargar ni descargar de memoria modelos ni cambiar los ajustes",
+      accessInferenceBadge: "Inferencia",
+      accessError: "No se pudo cambiar el acceso de esta clave",
       createTokenHint: 'Crear un token llamado "{name}"',
       defaultTokenName: "Token nuevo {n}",
       creating: "Creando...",

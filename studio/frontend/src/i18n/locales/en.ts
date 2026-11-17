@@ -2233,6 +2233,15 @@ export const en = {
         loadError: "Failed to load the launch at login setting.",
         saveError: "Failed to update the launch at login setting.",
       },
+      power: {
+        sectionTitle: "Power",
+        keepAwake: "Keep computer awake",
+        keepAwakeDescription:
+          "Stop this computer from going to sleep on its own while Unsloth is running. The display can still turn off.",
+        keepAwakeKeywords: "sleep suspend standby hibernate caffeinate insomnia no sleep power",
+        loadError: "Failed to load the keep computer awake setting.",
+        saveError: "Failed to update the keep computer awake setting.",
+      },
       hub: {
         source: "Model source",
         sourceDescription: "Where the model hub searches and downloads. Choose ModelScope if Hugging Face is blocked or slow on your network.",
@@ -3597,6 +3606,12 @@ export const en = {
       createToken: "Create token",
       neverExpiresHint: "Never expires",
       expiresInDaysHint: "Expires in {n} days",
+      accessFull: "Full access",
+      accessInference: "Inference only",
+      accessFullHint: "Can use the whole Unsloth API, including loading, downloading and deleting models",
+      accessInferenceHint: "Can chat with and list loaded models, but cannot load, unload or download models or change settings",
+      accessInferenceBadge: "Inference",
+      accessError: "Could not change this key's access",
       createTokenHint: 'Create a token named "{name}"',
       defaultTokenName: "New Token {n}",
       creating: "Creating...",

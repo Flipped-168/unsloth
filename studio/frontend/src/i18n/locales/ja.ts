@@ -2187,6 +2187,15 @@ export const ja = {
         loadError: "ログイン時起動の設定を読み込めませんでした。",
         saveError: "ログイン時起動の設定を更新できませんでした。",
       },
+      power: {
+        sectionTitle: "電源",
+        keepAwake: "コンピューターをスリープさせない",
+        keepAwakeDescription:
+          "Unsloth の実行中は、このコンピューターが自動でスリープしないようにします。ディスプレイはオフになる場合があります。",
+        keepAwakeKeywords: "スリープ サスペンド 休止 スタンバイ 電源 sleep caffeinate",
+        loadError: "スリープ防止の設定を読み込めませんでした。",
+        saveError: "スリープ防止の設定を更新できませんでした。",
+      },
       hub: {
         source: "モデルの取得元",
         sourceDescription: "モデルハブの検索とダウンロード先です。ネットワークで Hugging Face がブロックされている、または遅い場合は ModelScope を選んでください。",
@@ -3639,6 +3648,12 @@ export const ja = {
       createToken: "トークンを作成",
       neverExpiresHint: "期限なし",
       expiresInDaysHint: "{n} 日後に期限切れ",
+      accessFull: "フルアクセス",
+      accessInference: "推論のみ",
+      accessFullHint: "モデルの読み込み、ダウンロード、削除を含む Unsloth API 全体を使用できます",
+      accessInferenceHint: "読み込み済みモデルとのチャットと一覧表示はできますが、モデルの読み込み、解放、ダウンロードや設定の変更はできません",
+      accessInferenceBadge: "推論",
+      accessError: "このキーのアクセスを変更できませんでした",
       createTokenHint: "「{name}」という名前のトークンを作成",
       defaultTokenName: "新しいトークン {n}",
       creating: "作成中...",

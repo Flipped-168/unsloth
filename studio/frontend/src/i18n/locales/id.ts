@@ -2392,6 +2392,15 @@ export const id = {
         loadError: "Gagal memuat pengaturan jalankan saat masuk.",
         saveError: "Gagal memperbarui pengaturan jalankan saat masuk.",
       },
+      power: {
+        sectionTitle: "Daya",
+        keepAwake: "Biarkan komputer tetap aktif",
+        keepAwakeDescription:
+          "Mencegah komputer ini masuk mode tidur dengan sendirinya selama Unsloth berjalan. Layar tetap bisa mati.",
+        keepAwakeKeywords: "tidur suspend siaga hibernasi daya sleep caffeinate",
+        loadError: "Gagal memuat pengaturan biarkan komputer tetap aktif.",
+        saveError: "Gagal memperbarui pengaturan biarkan komputer tetap aktif.",
+      },
       hub: {
         source: "Sumber model",
         sourceDescription:
@@ -3855,6 +3864,12 @@ export const id = {
       createToken: "Buat token",
       neverExpiresHint: "Tidak pernah kedaluwarsa",
       expiresInDaysHint: "Kedaluwarsa dalam {n} hari",
+      accessFull: "Akses penuh",
+      accessInference: "Hanya inferensi",
+      accessFullHint: "Dapat menggunakan seluruh API Unsloth, termasuk memuat, mengunduh, dan menghapus model",
+      accessInferenceHint: "Dapat mengobrol dengan model yang dimuat dan melihat daftarnya, tetapi tidak dapat memuat, melepas, atau mengunduh model, atau mengubah pengaturan",
+      accessInferenceBadge: "Inferensi",
+      accessError: "Tidak dapat mengubah akses kunci ini",
       createTokenHint: 'Buat token bernama "{name}"',
       defaultTokenName: "Token Baru {n}",
       creating: "Membuat...",

@@ -2266,6 +2266,15 @@ export const he = {
         loadError: "טעינת הגדרת ההפעלה בכניסה למערכת נכשלה.",
         saveError: "עדכון הגדרת ההפעלה בכניסה למערכת נכשל.",
       },
+      power: {
+        sectionTitle: "חשמל",
+        keepAwake: "השארת המחשב ער",
+        keepAwakeDescription:
+          "מונע מהמחשב לעבור למצב שינה מעצמו כל עוד Unsloth פועל. המסך עדיין יכול לכבות.",
+        keepAwakeKeywords: "שינה השהיה המתנה חשמל sleep caffeinate",
+        loadError: "טעינת ההגדרה של השארת המחשב ער נכשלה.",
+        saveError: "עדכון ההגדרה של השארת המחשב ער נכשל.",
+      },
       hub: {
         source: "מקור המודלים",
         sourceDescription:
@@ -3745,6 +3754,12 @@ export const he = {
       createToken: "צור טוקן",
       neverExpiresHint: "ללא תפוגה",
       expiresInDaysHint: "פג תוקף בעוד {n} ימים",
+      accessFull: "גישה מלאה",
+      accessInference: "הסקה בלבד",
+      accessFullHint: "יכול להשתמש בכל ה-API של Unsloth, כולל טעינה, הורדה ומחיקה של מודלים",
+      accessInferenceHint: "יכול לשוחח עם מודלים טעונים ולהציג אותם, אך אינו יכול לטעון, לפרוק או להוריד מודלים או לשנות הגדרות",
+      accessInferenceBadge: "הסקה",
+      accessError: "לא ניתן לשנות את הגישה של מפתח זה",
       createTokenHint: "יצירת טוקן בשם \"{name}\"",
       defaultTokenName: "טוקן חדש {n}",
       creating: "יוצר...",

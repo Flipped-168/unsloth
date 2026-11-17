@@ -2120,6 +2120,15 @@ export const it = {
         saveError:
           "Impossibile aggiornare l'impostazione di avvio all'accesso.",
       },
+      power: {
+        sectionTitle: "Alimentazione",
+        keepAwake: "Mantieni il computer attivo",
+        keepAwakeDescription:
+          "Impedisce a questo computer di andare in sospensione da solo mentre Unsloth è in esecuzione. Lo schermo può comunque spegnersi.",
+        keepAwakeKeywords: "sospensione stop standby ibernazione energia sleep caffeinate",
+        loadError: "Impossibile caricare l'impostazione per mantenere il computer attivo.",
+        saveError: "Impossibile aggiornare l'impostazione per mantenere il computer attivo.",
+      },
       hub: {
         source: "Origine dei modelli",
         sourceDescription: "Dove l'hub dei modelli cerca e scarica. Scegli ModelScope se Hugging Face è bloccato o lento sulla tua rete.",
@@ -3584,6 +3593,12 @@ export const it = {
       createToken: "Crea token",
       neverExpiresHint: "Non scade mai",
       expiresInDaysHint: "Scade tra {n} giorni",
+      accessFull: "Accesso completo",
+      accessInference: "Solo inferenza",
+      accessFullHint: "Può usare tutta l'API di Unsloth, inclusi caricamento, download ed eliminazione dei modelli",
+      accessInferenceHint: "Può chattare con i modelli caricati ed elencarli, ma non può caricare, scaricare dalla memoria o scaricare modelli né modificare le impostazioni",
+      accessInferenceBadge: "Inferenza",
+      accessError: "Impossibile modificare l'accesso di questa chiave",
       createTokenHint: 'Crea un token chiamato "{name}"',
       defaultTokenName: "Nuovo token {n}",
       creating: "Creazione...",

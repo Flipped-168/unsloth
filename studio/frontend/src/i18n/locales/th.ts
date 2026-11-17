@@ -2292,6 +2292,15 @@ export const th = {
         loadError: "โหลดการตั้งค่าเปิดเมื่อลงชื่อเข้าใช้ไม่สำเร็จ",
         saveError: "อัปเดตการตั้งค่าเปิดเมื่อลงชื่อเข้าใช้ไม่สำเร็จ",
       },
+      power: {
+        sectionTitle: "พลังงาน",
+        keepAwake: "ไม่ให้คอมพิวเตอร์เข้าสู่โหมดสลีป",
+        keepAwakeDescription:
+          "ป้องกันไม่ให้คอมพิวเตอร์นี้เข้าสู่โหมดสลีปเองขณะที่ Unsloth ทำงานอยู่ จอภาพยังคงปิดได้",
+        keepAwakeKeywords: "สลีป พักเครื่อง ไฮเบอร์เนต สแตนด์บาย พลังงาน sleep caffeinate",
+        loadError: "โหลดการตั้งค่าไม่ให้คอมพิวเตอร์เข้าสู่โหมดสลีปไม่สำเร็จ",
+        saveError: "อัปเดตการตั้งค่าไม่ให้คอมพิวเตอร์เข้าสู่โหมดสลีปไม่สำเร็จ",
+      },
       hub: {
         source: "แหล่งที่มาของโมเดล",
         sourceDescription:
@@ -3696,6 +3705,12 @@ export const th = {
       createToken: "สร้างโทเค็น",
       neverExpiresHint: "ไม่มีวันหมดอายุ",
       expiresInDaysHint: "หมดอายุใน {n} วัน",
+      accessFull: "สิทธิ์เต็ม",
+      accessInference: "อนุมานเท่านั้น",
+      accessFullHint: "ใช้ Unsloth API ได้ทั้งหมด รวมถึงการโหลด ดาวน์โหลด และลบโมเดล",
+      accessInferenceHint: "แชตกับโมเดลที่โหลดไว้และแสดงรายการได้ แต่โหลด ยกเลิกการโหลด หรือดาวน์โหลดโมเดล และเปลี่ยนการตั้งค่าไม่ได้",
+      accessInferenceBadge: "อนุมาน",
+      accessError: "ไม่สามารถเปลี่ยนสิทธิ์ของคีย์นี้ได้",
       createTokenHint: "สร้างโทเค็นชื่อ “{name}”",
       defaultTokenName: "โทเค็นใหม่ {n}",
       creating: "กำลังสร้าง...",

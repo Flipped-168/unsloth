@@ -2409,6 +2409,15 @@ export const cs = {
         saveError:
           "Nastavení spouštění po přihlášení se nepodařilo aktualizovat.",
       },
+      power: {
+        sectionTitle: "Napájení",
+        keepAwake: "Nechat počítač vzhůru",
+        keepAwakeDescription:
+          "Zabrání tomu, aby počítač sám přešel do režimu spánku, dokud běží Unsloth. Displej se může i tak vypnout.",
+        keepAwakeKeywords: "spánek uspání hibernace úspora napájení sleep caffeinate",
+        loadError: "Nastavení nechat počítač vzhůru se nepodařilo načíst.",
+        saveError: "Nastavení nechat počítač vzhůru se nepodařilo aktualizovat.",
+      },
       hub: {
         source: "Zdroj modelů",
         sourceDescription:
@@ -3873,6 +3882,12 @@ export const cs = {
       createToken: "Vytvořit token",
       neverExpiresHint: "Platnost nikdy nevyprší",
       expiresInDaysHint: "Platnost vyprší za {n} d.",
+      accessFull: "Plný přístup",
+      accessInference: "Pouze inference",
+      accessFullHint: "Může používat celé API Unsloth včetně načítání, stahování a mazání modelů",
+      accessInferenceHint: "Může chatovat s načtenými modely a vypsat je, ale nemůže načítat, uvolňovat ani stahovat modely ani měnit nastavení",
+      accessInferenceBadge: "Inference",
+      accessError: "Přístup tohoto klíče se nepodařilo změnit",
       createTokenHint: "Vytvořit token s názvem „{name}“",
       defaultTokenName: "Nový token {n}",
       creating: "Vytváření...",

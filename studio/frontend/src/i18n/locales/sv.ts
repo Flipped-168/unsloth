@@ -2330,6 +2330,15 @@ export const sv = {
         saveError:
           "Det gick inte att uppdatera inställningen för start vid inloggning.",
       },
+      power: {
+        sectionTitle: "Energi",
+        keepAwake: "Håll datorn vaken",
+        keepAwakeDescription:
+          "Hindrar datorn från att gå i viloläge av sig själv medan Unsloth körs. Skärmen kan fortfarande stängas av.",
+        keepAwakeKeywords: "viloläge sömn vänteläge strömsparläge energi sleep caffeinate",
+        loadError: "Det gick inte att läsa in inställningen för att hålla datorn vaken.",
+        saveError: "Det gick inte att uppdatera inställningen för att hålla datorn vaken.",
+      },
       hub: {
         source: "Modellkälla",
         sourceDescription:
@@ -3842,6 +3851,12 @@ export const sv = {
       createToken: "Skapa token",
       neverExpiresHint: "Upphör aldrig",
       expiresInDaysHint: "Upphör om {n} dagar",
+      accessFull: "Full åtkomst",
+      accessInference: "Endast inferens",
+      accessFullHint: "Kan använda hela Unsloth API, inklusive att läsa in, ladda ned och ta bort modeller",
+      accessInferenceHint: "Kan chatta med inlästa modeller och lista dem, men kan inte läsa in, ta ur minnet eller ladda ned modeller eller ändra inställningar",
+      accessInferenceBadge: "Inferens",
+      accessError: "Det gick inte att ändra nyckelns åtkomst",
       createTokenHint: "Skapa en token med namnet \"{name}\"",
       defaultTokenName: "Ny token {n}",
       creating: "Skapar ...",

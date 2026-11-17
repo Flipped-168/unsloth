@@ -2200,6 +2200,15 @@ export const hi = {
         loadError: "लॉगिन पर चलाने की सेटिंग लोड नहीं हो सकी।",
         saveError: "लॉगिन पर चलाने की सेटिंग अपडेट नहीं हो सकी।",
       },
+      power: {
+        sectionTitle: "पावर",
+        keepAwake: "कंप्यूटर को जगाए रखें",
+        keepAwakeDescription:
+          "जब तक Unsloth चल रहा है, इस कंप्यूटर को अपने आप स्लीप में जाने से रोकें। डिस्प्ले फिर भी बंद हो सकता है।",
+        keepAwakeKeywords: "स्लीप निष्क्रिय हाइबरनेट पावर sleep caffeinate",
+        loadError: "कंप्यूटर को जगाए रखने की सेटिंग लोड नहीं हो सकी।",
+        saveError: "कंप्यूटर को जगाए रखने की सेटिंग अपडेट नहीं हो सकी।",
+      },
       hub: {
         source: "मॉडल स्रोत",
         sourceDescription: "मॉडल हब कहाँ खोजता और डाउनलोड करता है। अगर आपके नेटवर्क पर Hugging Face ब्लॉक या धीमा है तो ModelScope चुनें।",
@@ -3672,6 +3681,12 @@ export const hi = {
       createToken: "टोकन बनाएँ",
       neverExpiresHint: "कभी समाप्त नहीं होता",
       expiresInDaysHint: "{n} दिनों में समाप्त",
+      accessFull: "पूर्ण एक्सेस",
+      accessInference: "केवल इन्फ़रेंस",
+      accessFullHint: "पूरे Unsloth API का उपयोग कर सकता है, जिसमें मॉडल लोड करना, डाउनलोड करना और हटाना शामिल है",
+      accessInferenceHint: "लोड किए गए मॉडल से चैट कर सकता है और उनकी सूची देख सकता है, लेकिन मॉडल लोड, अनलोड या डाउनलोड नहीं कर सकता और सेटिंग्स नहीं बदल सकता",
+      accessInferenceBadge: "इन्फ़रेंस",
+      accessError: "इस कुंजी की एक्सेस नहीं बदली जा सकी",
       createTokenHint: "\"{name}\" नाम का टोकन बनाएं",
       defaultTokenName: "नया टोकन {n}",
       creating: "बनाया जा रहा है...",

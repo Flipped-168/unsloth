@@ -2193,6 +2193,15 @@ export const ko = {
         loadError: "로그인 시 실행 설정을 불러오지 못했습니다.",
         saveError: "로그인 시 실행 설정을 업데이트하지 못했습니다.",
       },
+      power: {
+        sectionTitle: "전원",
+        keepAwake: "컴퓨터 절전 모드 방지",
+        keepAwakeDescription:
+          "Unsloth가 실행되는 동안 이 컴퓨터가 자동으로 절전 모드로 전환되지 않도록 합니다. 디스플레이는 꺼질 수 있습니다.",
+        keepAwakeKeywords: "절전 수면 대기 최대 절전 전원 sleep caffeinate",
+        loadError: "절전 모드 방지 설정을 불러오지 못했습니다.",
+        saveError: "절전 모드 방지 설정을 업데이트하지 못했습니다.",
+      },
       hub: {
         source: "모델 소스",
         sourceDescription: "모델 허브가 검색하고 다운로드하는 곳입니다. 네트워크에서 Hugging Face가 차단되었거나 느리면 ModelScope를 선택하세요.",
@@ -3653,6 +3662,12 @@ export const ko = {
       createToken: "토큰 생성",
       neverExpiresHint: "만료되지 않음",
       expiresInDaysHint: "{n}일 후 만료",
+      accessFull: "전체 액세스",
+      accessInference: "추론 전용",
+      accessFullHint: "모델 로드, 다운로드, 삭제를 포함해 Unsloth API 전체를 사용할 수 있습니다",
+      accessInferenceHint: "로드된 모델과 채팅하고 목록을 볼 수 있지만, 모델을 로드, 언로드, 다운로드하거나 설정을 변경할 수 없습니다",
+      accessInferenceBadge: "추론",
+      accessError: "이 키의 액세스를 변경할 수 없습니다",
       createTokenHint: "\"{name}\" 토큰 만들기",
       defaultTokenName: "새 토큰 {n}",
       creating: "생성 중...",

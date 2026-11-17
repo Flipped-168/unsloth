@@ -2177,6 +2177,15 @@ export const zhCN = {
         loadError: "无法加载登录时启动设置。",
         saveError: "无法更新登录时启动设置。",
       },
+      power: {
+        sectionTitle: "电源",
+        keepAwake: "保持电脑唤醒",
+        keepAwakeDescription:
+          "在 Unsloth 运行期间阻止这台电脑自动进入睡眠。显示器仍可关闭。",
+        keepAwakeKeywords: "睡眠 休眠 待机 挂起 电源 sleep caffeinate",
+        loadError: "无法加载保持电脑唤醒设置。",
+        saveError: "无法更新保持电脑唤醒设置。",
+      },
       hub: {
         source: "模型来源",
         sourceDescription: "模型中心搜索和下载的来源。如果你的网络无法访问 Hugging Face 或速度很慢，请选择 ModelScope。",
@@ -3609,6 +3618,12 @@ export const zhCN = {
       createToken: "创建 token",
       neverExpiresHint: "永不过期",
       expiresInDaysHint: "{n} 天后过期",
+      accessFull: "完全访问",
+      accessInference: "仅推理",
+      accessFullHint: "可以使用整个 Unsloth API，包括加载、下载和删除模型",
+      accessInferenceHint: "可以与已加载的模型对话并列出它们，但不能加载、卸载或下载模型，也不能更改设置",
+      accessInferenceBadge: "推理",
+      accessError: "无法更改此密钥的访问权限",
       createTokenHint: "创建名为“{name}”的 Token",
       defaultTokenName: "新 token {n}",
       creating: "创建中...",
