@@ -237,6 +237,21 @@ test("a loaded row ejects from its menu and the collapsed view, never its dot", 
   assert.match(page, /eject: handleEject,/);
 });
 
+test("a model with no thinking skips the collapsed view and closes once loaded", () => {
+  const picker = readSrc(
+    "components/assistant-ui/composer-model-picker/composer-model-picker.tsx",
+  );
+  assert.match(
+    picker,
+    /const isExpanded = expanded \|\| !chosenName \|\| noThinking;/,
+  );
+  assert.match(picker, /if \(fresh\) \{\s+closeIfNoThinking\.current\(\);/);
+  assert.match(
+    picker,
+    /\{chosenName && !noThinking \? \(\s+<Hint label="Collapse">/,
+  );
+});
+
 test("Run settings open inside the composer picker, not the header picker", () => {
   const picker = readSrc(
     "components/assistant-ui/composer-model-picker/composer-model-picker.tsx",
@@ -272,7 +287,14 @@ test("On Device groups rows like the header picker, NPU and custom folders inclu
     "components/assistant-ui/composer-model-picker/composer-model-picker.tsx",
   );
   assert.match(picker, /useNpuCatalog\(/);
-  assert.match(picker, /kind: "npu",\s+section: "npu"/);
+  assert.match(
+    picker,
+    /device\.push\(\.\.\.npuPickerRows\(npuModels, true\)\)/,
+  );
+  assert.match(
+    readSrc("components/assistant-ui/composer-model-picker/npu-rows.ts"),
+    /kind: "npu",\s+section: "npu"/,
+  );
   assert.match(picker, /useCustomFolders\(/);
   assert.match(
     picker,
@@ -689,14 +711,14 @@ test("the open picker is at least 420px and grows only into the room under Selec
   );
 });
 
-test("short landscape windows get a 380px floor; phones and tall windows keep 420px", () => {
-  assert.equal(pickerMinHeight(1366, 768, 1), 380);
-  assert.equal(pickerMinHeight(1280, 640, 1), 380);
-  assert.equal(pickerMinHeight(1440, 900, 1), 380);
+test("short landscape windows get a 400px floor; phones and tall windows keep 420px", () => {
+  assert.equal(pickerMinHeight(1366, 768, 1), 400);
+  assert.equal(pickerMinHeight(1280, 640, 1), 400);
+  assert.equal(pickerMinHeight(1440, 900, 1), 400);
   assert.equal(pickerMinHeight(1920, 1080, 1), 420);
   assert.equal(pickerMinHeight(390, 844, 1), 420);
   // 1366x768 at 67% zoom.
-  assert.equal(pickerMinHeight(2039, 1146, 1.49), 380);
+  assert.equal(pickerMinHeight(2039, 1146, 1.49), 400);
   const picker = readSrc(
     "components/assistant-ui/composer-model-picker/composer-model-picker.tsx",
   );
@@ -960,6 +982,13 @@ test("the picker slides back inside a narrow window instead of hanging off its e
     0,
   );
   assert.equal(pickerAlignOffset("end", null, 404, 375), 0);
+  assert.equal(pickerAlignOffset("end", { left: 0, right: 0 }, 520, 2000), 0);
+  assert.match(
+    readSrc(
+      "components/assistant-ui/composer-model-picker/composer-model-picker.tsx",
+    ),
+    /pickerAlignOffset\(align, rect, panel\.offsetWidth, window\.innerWidth\)/,
+  );
 });
 
 test("the picker caps at 520px on a big screen but keeps its on-screen size zoomed out", () => {

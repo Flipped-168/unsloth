@@ -24,6 +24,7 @@ from typing import Any, Optional, Tuple
 import torch
 from torch import Tensor
 import torch.nn.functional as F
+from packaging.version import Version
 
 from ..device_type import DEVICE_TYPE
 from ..models._utils import *
@@ -48,6 +49,13 @@ flash_attn_varlen_func = None
 if HAS_FLASH_ATTENTION:
     from flash_attn import flash_attn_func, flash_attn_varlen_func
 HAS_XFORMERS = xformers is not None
+
+# True while a traced block's attention runs eagerly (saved-attention graph break): keep traced dispatch.
+_AS_TRACED = [False]
+
+
+def _compiling():
+    return torch.compiler.is_compiling() or _AS_TRACED[0]
 
 
 def _xformers_runs_on_device(device = "cuda", supports_bf16 = None) -> bool:
@@ -109,8 +117,35 @@ def _avoids_cudnn(Q, training):
     return bool(training) and Q.is_cuda and Q.device.index in _NO_CUDNN_TRAINING
 
 
+# torch < 2.14 compiled masked SDPA backward faults on an unaligned bias; pad the call to a multiple of 8.
+_MASKED_SDPA_ALIGNMENT = 8
+_MASKED_SDPA_NEEDS_ALIGNMENT = Version(torch.__version__.split("+")[0]) < Version("2.14.0")
+
+
+def _masked_sdpa_needs_alignment(Q, K, attn_mask):
+    return (
+        _MASKED_SDPA_NEEDS_ALIGNMENT
+        and isinstance(attn_mask, torch.Tensor)
+        and Q.is_cuda
+        and Q.shape[-2] == K.shape[-2]
+        and torch.compiler.is_compiling()
+    )
+
+
 def _training_sdpa(*args, **kwargs):
     """Avoid per-length cuDNN planning on SM100 training calls, including traced forwards."""
+    if len(args) >= 3 and _masked_sdpa_needs_alignment(args[0], args[1], kwargs.get("attn_mask")):
+        # Pad 2..9, never 0 or 1: dynamo specialises those and recompiles.
+        Q, K, V = args[:3]
+        q_len = Q.shape[-2]
+        pad = 2 + (-q_len - 2) % _MASKED_SDPA_ALIGNMENT
+        Q, K, V = (F.pad(x, (0, 0, 0, pad)) for x in (Q, K, V))
+        kwargs = {**kwargs, "attn_mask": _padded_bucket_mask(kwargs["attn_mask"], pad)}
+        return _training_sdpa_call(Q, K, V, *args[3:], **kwargs)[..., :q_len, :]
+    return _training_sdpa_call(*args, **kwargs)
+
+
+def _training_sdpa_call(*args, **kwargs):
     if args and _avoids_cudnn(args[0], True):
         # Narrows the caller's sdpa_kernel policy (MATH stays math); cuDNN-only runs as asked.
         backends = _CUDNN_FREE_BACKENDS[_cudnn_free_index()]
@@ -384,7 +419,7 @@ def decode_scaled_dot_product_attention(query, key, value, *args, **kwargs):
         and query.shape[-2] == 1
         and query.device.index in _NO_CUDNN_DECODE
         and (
-            torch.compiler.is_compiling()
+            _compiling()
             or _decode_picks_cudnn(
                 query,
                 key,
@@ -441,6 +476,7 @@ def _on_tensor_device(X):
     if (
         DEVICE_TYPE in ("cuda", "hip")
         and X.is_cuda
+        # Eager under a traced caller too: only Inductor's graph applied a device guard.
         and not torch.compiler.is_compiling()
         and X.device.index != torch.cuda.current_device()
     ):
@@ -454,7 +490,7 @@ _XFORMERS_PROBED: dict = {}
 
 def _xformers_runs_on(index: int) -> bool:
     if index not in _XFORMERS_PROBED:
-        if torch.compiler.is_compiling():
+        if _compiling():
             return False  # never probe inside a traced region; SDPA is always valid
         _XFORMERS_PROBED[index] = _xformers_runs_on_device(f"cuda:{index}", supports_bf16 = True)
     return _XFORMERS_PROBED[index]
@@ -634,7 +670,7 @@ class _LeanFlashVarlen(torch.autograd.Function):
 def _varlen_attn_call(Q_f, K_f, V_f, cu_seqlens, max_seqlen, *, scale, window_size, enable_gqa):
     if (
         _LEAN_VARLEN
-        and not torch.compiler.is_compiling()
+        and not _compiling()
         and not _varlen_can_use_cudnn(
             Q_f, K_f, V_f, cu_seqlens, max_seqlen, list(window_size), enable_gqa
         )
@@ -1651,7 +1687,37 @@ def run_attention(
     manager = get_cp_manager()
     if manager is not None and manager.backend == "ulysses":
         return ulysses_attention(_run_attention, config, context, Q, K, V, manager.group)
+    if _SAVE_ATTENTION and context.training and manager is None:
+        # GC replay reuses the first pass's attention output + logsumexp; graph breaks under compile.
+        traced = torch.compiler.is_compiling()
+        return _saved_attention_call(
+            lambda Q, K, V: _run_attention_as(traced, config, context, Q, K, V),
+            Q,
+            K,
+            V,
+        )
     return _run_attention(config = config, context = context, Q = Q, K = K, V = V)
+
+
+def _run_attention_as(traced, config, context, Q, K, V):
+    previous = _AS_TRACED[0]
+    _AS_TRACED[0] = traced or previous
+    try:
+        return _run_attention(config = config, context = context, Q = Q, K = K, V = V)
+    finally:
+        _AS_TRACED[0] = previous
+
+
+def _load_saved_attention():
+    try:
+        from unsloth_zoo.saved_attention import save_attention_enabled, saved_attention_call
+    except Exception:
+        return None
+    return saved_attention_call if save_attention_enabled() else None
+
+
+_saved_attention_call = _load_saved_attention()
+_SAVE_ATTENTION = _saved_attention_call is not None
 
 
 def _run_attention(
@@ -1754,7 +1820,7 @@ def _run_attention(
     xformers_rerouted = False
     if (
         backend == XFORMERS
-        and torch.compiler.is_compiling()
+        and _compiling()
         and context.seq_info is None
         and context.attention_mask is None
         and context.is_causal

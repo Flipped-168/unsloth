@@ -1102,7 +1102,8 @@ def test_dense_speed_auto_defers_compile_to_third_generation(fake_runtime, tmp_p
         target = None,
         requested = None,
         speed_active = True,
-        speed_unset_only = False: backend,
+        speed_unset_only = False,
+        int8_policy = None: backend,
     )
     monkeypatch.setattr(
         dmod,
@@ -1403,7 +1404,8 @@ def test_deferred_speed_preserves_explicit_attention(fake_runtime, tmp_path, mon
         target = None,
         requested = None,
         speed_active = True,
-        speed_unset_only = False: backend,
+        speed_unset_only = False,
+        int8_policy = None: backend,
     )
 
     def fake_select(
@@ -4346,7 +4348,8 @@ def test_load_refines_component_placement_after_text_encoder_quantization(
 
     monkeypatch.setattr(dmod, "quantize_text_encoders", _quantize)
     monkeypatch.setattr(dmod, "refine_memory_plan_for_components", _refine)
-    _load_m(backend, tmp_path, memory_mode = "low_vram")
+    # The legacy flag is the whole-module request now that low_vram streams.
+    _load_m(backend, tmp_path, cpu_offload = True)
     assert seen == {"quantized": True, "refined": True}
 
 

@@ -120,6 +120,10 @@ class LoadRequest(BaseModel):
         False,
         description = "Start a fresh runtime even when the active settings already match",
     )
+    use_saved_settings: bool = Field(
+        False,
+        description = "Take every load setting this request leaves unset from the model's saved launch settings",
+    )
     alongside: bool = Field(
         False,
         description = "Keep the loaded model and serve this one next to it",
@@ -4557,10 +4561,11 @@ class AnthropicMessage(BaseModel):
                         else getattr(block, "source", None)
                     )
                     stype = source.get("type") if isinstance(source, dict) else None
-                    if stype not in ("text", "content"):
+                    pdf = stype == "base64" and source.get("media_type") == "application/pdf"
+                    if stype not in ("text", "content") and not pdf:
                         raise ValueError(
-                            f"unsupported document source type {stype!r}: only text and content "
-                            "documents can be read"
+                            f"unsupported document source type {stype!r}: only text, content "
+                            "and base64 PDF documents can be read"
                         )
         return data
 
@@ -4927,7 +4932,8 @@ class DiffusionLoadRequest(BaseModel):
         None,
         description = "Memory policy: auto (measured), fast (resident), balanced "
         "(stream the transformer, near-resident speed, moderate VRAM "
-        "cut), low_vram (offload every component, lowest VRAM, slower). "
+        "cut), low_vram (stream the transformer and text encoders block by block, tiled VAE "
+        "decode; lowest VRAM, slowest). "
         "Overrides cpu_offload when set.",
     )
     allow_oversized_load: bool = Field(
@@ -4939,7 +4945,9 @@ class DiffusionLoadRequest(BaseModel):
     )
     speed_mode: Optional[Literal["off", "eager", "default", "max"]] = Field(
         None,
-        description = "Opt-in speed optims (default off -> bit-identical output): "
+        description = "Speed optims. Unset: off for a dense load, default for a GGUF load "
+        "(near-lossless compile profile). off: bit-identical output (a quantized transformer "
+        "still compiles). "
         "eager (channels_last + cudnn + attention + fused RMSNorm/AdaLayerNorm patches, "
         "NO torch.compile -> fast first image, no compile tax), "
         "default (also regional torch.compile where eligible), "
@@ -5036,6 +5044,16 @@ class DiffusionLoadRequest(BaseModel):
         "strided attention processors; xformers/aiter are memory-efficient (NVIDIA) / AMD ROCm. An "
         "unavailable kernel falls back to the default.",
     )
+    int8_attention: Optional[Literal["auto", "on", "off"]] = Field(
+        None,
+        description = "Studio's own INT8 attention kernel for this load. auto (the default, also when unset) "
+        "engages it where it is measured accurate and faster for this model and GPU (it passes the per-card "
+        "accuracy check against fp32 attention and wins a timed race against the selected attention); the "
+        "UNSLOTH_DIFFUSION_INT8_ATTENTION_KERNEL environment switch still applies. on engages it wherever it "
+        "passes the accuracy check, over the env switch (attention_backend=unsloth_int8 is the same). off never "
+        "engages it on this load, over the env switch; it does not change an explicit attention_backend such as "
+        "sage. The status record reports what engaged under resolved.int8_attention.",
+    )
     transformer_cache: Optional[Literal["off", "fbcache", "static"]] = Field(
         None,
         description = "Step caching. fbcache = First-Block-Cache: reuse the transformer tail "
@@ -5063,6 +5081,15 @@ class DiffusionLoadRequest(BaseModel):
         "to the one with the most free VRAM. Refused with a 400 when an index does not exist "
         "here; ignored on XPU / MPS / CPU, which have no applicator for a physical index.",
     )
+
+    @field_validator("int8_attention", mode = "before")
+    @classmethod
+    def _normalize_int8_attention(cls, value):
+        # Folded like attention_backend: the Literal above is validated after this; "" reads as unset.
+        if isinstance(value, str):
+            value = value.strip().lower()
+            return value or None
+        return value
 
     @field_validator("attention_backend", mode = "before")
     @classmethod
@@ -7556,7 +7583,8 @@ class VideoLoadRequest(BaseModel):
         None,
         description = "Memory policy: auto (measured), fast (resident), balanced "
         "(stream the transformer, near-resident speed, moderate VRAM cut), low_vram "
-        "(offload every component, lowest VRAM, slower).",
+        "(stream the transformer and text encoders block by block, tiled VAE decode; lowest "
+        "VRAM, slowest).",
     )
     allow_oversized_load: bool = Field(
         False,
@@ -7577,11 +7605,12 @@ class VideoLoadRequest(BaseModel):
     )
     speed_mode: Optional[Literal["off", "eager", "default", "max"]] = Field(
         None,
-        description = "Opt-in speed optims (default off -> bit-identical output): "
+        description = "Speed optims. Unset: default for every video load, dense or GGUF (regional "
+        "torch.compile where eligible; output is close to, not bit-identical with, off). "
+        "off (bit-identical output; a quantized transformer still compiles), "
         "eager (channels_last + cudnn + attention + fused norm patches, NO torch.compile), "
         "default (also regional torch.compile where eligible), "
-        "max (also TF32 + fused QKV). GGUF video loads default to the near-lossless "
-        "compile profile.",
+        "max (also TF32 + fused QKV).",
     )
     attention_backend: Optional[
         Literal[
@@ -7607,6 +7636,16 @@ class VideoLoadRequest(BaseModel):
         "attention; unsloth_int8 is Studio's own INT8 attention kernel on the families with strided "
         "attention processors; xformers/aiter are memory-efficient (NVIDIA) / AMD ROCm. An unavailable "
         "kernel falls back to the default.",
+    )
+    int8_attention: Optional[Literal["auto", "on", "off"]] = Field(
+        None,
+        description = "Studio's own INT8 attention kernel for this load. auto (the default, also when unset) "
+        "engages it where it is measured accurate and faster for this model and GPU (it passes the per-card "
+        "accuracy check against fp32 attention and wins a timed race against the selected attention); the "
+        "UNSLOTH_DIFFUSION_INT8_ATTENTION_KERNEL environment switch still applies. on engages it wherever it "
+        "passes the accuracy check, over the env switch (attention_backend=unsloth_int8 is the same). off never "
+        "engages it on this load, over the env switch; it does not change an explicit attention_backend such as "
+        "sage. The status record reports what engaged under resolved.int8_attention.",
     )
     transformer_cache: Optional[Literal["off", "fbcache", "static"]] = Field(
         None,
@@ -7689,6 +7728,15 @@ class VideoLoadRequest(BaseModel):
                         f"duplicate LoRA id '{spec.id}'; list each adapter at most once"
                     )
                 seen.add(spec.id)
+        return value
+
+    @field_validator("int8_attention", mode = "before")
+    @classmethod
+    def _normalize_int8_attention(cls, value):
+        # Folded like attention_backend: the Literal above is validated after this; "" reads as unset.
+        if isinstance(value, str):
+            value = value.strip().lower()
+            return value or None
         return value
 
     @field_validator("attention_backend", mode = "before")
