@@ -3151,6 +3151,8 @@ def _sole_nvidia_card_mib() -> "tuple[Optional[int], Optional[int]]":
         ],
         capture_output = True,
         text = True,
+        encoding = "utf-8",
+        errors = "replace",
         timeout = 10,
     )
     rows = [r.split(",") for r in out.stdout.strip().splitlines() if r.strip()]
@@ -3951,6 +3953,11 @@ class SdCppDiffusionBackend:
             from core.inference.diffusion_families import assert_flux3_checkpoint_matches_family
 
             assert_flux3_checkpoint_matches_family(fam, paths["diffusion_model"])
+            from core.inference.diffusion_content import sd_cpp_gguf_refusal
+
+            refusal = sd_cpp_gguf_refusal(paths["diffusion_model"])
+            if refusal is not None:
+                raise ValueError(refusal)
             sample_sigmas, grid_base = _base_sample_sigmas(
                 repo_id,
                 base,
