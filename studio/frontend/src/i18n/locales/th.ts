@@ -177,6 +177,7 @@ export const th = {
       add: "เพิ่ม",
       cancel: "ยกเลิก",
       removeSite: "นำ {site} ออก",
+      hostOnly: "เฉพาะโฮสต์นี้ ไม่รวมโดเมนย่อย",
       permissionsNote:
         "เฉพาะไซต์ที่มีสิทธิ์ของตัวเองเท่านั้นที่จะแสดงที่นี่ การดำเนินการได้แก่ การลงชื่อเข้าใช้ การส่งแบบฟอร์ม และปุ่มที่ใช้ซื้อ ส่ง หรือลบ",
       siteInvalid: "ป้อนไซต์ เช่น example.com หรือ *.example.com",
@@ -776,6 +777,7 @@ export const th = {
     background: "ติดตั้งในเบื้องหลัง",
     failed: "ติดตั้งเอนจินไม่สำเร็จ ลองอีกครั้งหรือใช้เอนจินเริ่มต้น",
     details: "รายละเอียดทางเทคนิค",
+    lastAttempt: "ลองครั้งล่าสุด: {time}",
     cancelled: "ยกเลิกการติดตั้งแล้ว คุณสามารถลองอีกครั้งได้",
     scope: "แชทข้อความและรูปภาพบน GPU ของ NVIDIA การโหลดครั้งแรกอาจใช้เวลานานขึ้น",
   },
@@ -932,7 +934,6 @@ export const th = {
     copy: "คัดลอก",
     addScheduledTask: "เพิ่มงานตามกำหนดเวลา…",
     compact: "ย่อการสนทนา",
-    compactQueued: "ขอให้ย่อการสนทนาในข้อความถัดไปแล้ว",
     compactEmpty: "ยังไม่มีอะไรให้ย่อ",
     compactUnsupported: "การย่อการสนทนาต้องใช้โมเดล GGUF หรือ MLX ที่รองรับเครื่องมือ",
   },
@@ -3224,6 +3225,7 @@ export const th = {
       groups: {
         replies: { title: "คำตอบ" },
         thinkingTools: { title: "การคิดและเครื่องมือ" },
+        customization: { title: "การปรับแต่ง" },
         conversations: {
           title: "การสนทนา",
         },
@@ -3271,6 +3273,10 @@ export const th = {
         fitOnDeviceOnly: "แสดงเฉพาะโมเดลที่ใช้ได้",
         fitOnDeviceOnlyDescription:
           "ซ่อนโมเดลที่ใหญ่เกินหน่วยความจำ GPU และ RAM ของอุปกรณ์นี้ในตัวเลือกโมเดลและ Hub โมเดลที่ดาวน์โหลดแล้วจะยังแสดงอยู่",
+        pickerExpandLoaded: "แสดงรายการโมเดลทั้งหมด",
+        pickerExpandLoadedDescription: "เปิดตัวเลือกโมเดลที่รายการทั้งหมดขณะที่มีโมเดลโหลดอยู่ แทนที่จะแสดงเฉพาะโมเดลที่โหลด การขยายหรือยุบตัวเลือกจะเปลี่ยนการตั้งค่านี้ด้วย",
+        pickerMonochromeIcons: "ไอคอนโมเดลสีเดียว",
+        pickerMonochromeIconsDescription: "แสดงโลโก้ของโมเดลและผู้ให้บริการเป็นสีดำ ขาว และเทาในตัวเลือกโมเดล",
       },
       menu: {
         title: "เมนูแชท",

@@ -179,6 +179,7 @@ export const pl = {
       add: "Dodaj",
       cancel: "Anuluj",
       removeSite: "Usuń {site}",
+      hostOnly: "Tylko ten host, bez jego subdomen",
       permissionsNote:
         "Wyświetlane są tylko witryny z własnymi uprawnieniami. Działania to logowania, wysyłanie formularzy oraz przyciski, które kupują, wysyłają lub usuwają.",
       siteInvalid: "Wpisz witrynę, np. example.com lub *.example.com.",
@@ -811,6 +812,7 @@ export const pl = {
     failed:
       "Instalacja silnika nie powiodła się. Spróbuj ponownie lub użyj silnika domyślnego.",
     details: "Szczegóły techniczne",
+    lastAttempt: "Ostatnia próba: {time}",
     cancelled: "Anulowano instalację. Możesz spróbować ponownie.",
     scope:
       "Czat tekstowy i z obrazami na procesorach GPU NVIDIA. Pierwsze wczytanie może potrwać dłużej.",
@@ -985,7 +987,6 @@ export const pl = {
     copy: "Kopiuj",
     addScheduledTask: "Dodaj zaplanowane zadanie…",
     compact: "Kompaktuj rozmowę",
-    compactQueued: "Zażądano kompaktowania przy następnej wiadomości",
     compactEmpty: "Nie ma jeszcze czego kompaktować",
     compactUnsupported:
       "Kompaktowanie wymaga modelu GGUF lub MLX z obsługą narzędzi",
@@ -3390,6 +3391,7 @@ export const pl = {
       groups: {
         replies: { title: "Odpowiedzi" },
         thinkingTools: { title: "Myślenie i narzędzia" },
+        customization: { title: "Personalizacja" },
         conversations: {
           title: "Rozmowy",
         },
@@ -3441,6 +3443,10 @@ export const pl = {
         fitOnDeviceOnly: "Pokazuj tylko mieszczące się modele",
         fitOnDeviceOnlyDescription:
           "Ukrywaj w wyborze modelu i centrum modele zbyt duże dla pamięci GPU i RAM tego urządzenia. Pobrane modele pozostają widoczne.",
+        pickerExpandLoaded: "Pokaż pełną listę modeli",
+        pickerExpandLoadedDescription: "Gdy model jest załadowany, otwieraj wybór modelu na pełnej liście zamiast tylko załadowanego modelu. Rozwinięcie lub zwinięcie wyboru również zmienia to ustawienie.",
+        pickerMonochromeIcons: "Monochromatyczne ikony modeli",
+        pickerMonochromeIconsDescription: "Pokazuj logo modeli i dostawców w czerni, bieli i szarości w wyborze modelu.",
       },
       menu: {
         title: "Menu czatu",

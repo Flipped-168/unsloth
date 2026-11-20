@@ -179,6 +179,7 @@ export const id = {
       add: "Tambah",
       cancel: "Batal",
       removeSite: "Hapus {site}",
+      hostOnly: "Hanya host ini, bukan subdomainnya",
       permissionsNote:
         "Hanya situs yang memiliki izin sendiri yang muncul di sini. Tindakan mencakup proses masuk, pengiriman formulir, dan tombol untuk membeli, mengirim, atau menghapus.",
       siteInvalid: "Masukkan situs seperti example.com atau *.example.com.",
@@ -805,6 +806,7 @@ export const id = {
     background: "Diinstal di latar belakang.",
     failed: "Instalasi engine gagal. Coba lagi atau gunakan engine default.",
     details: "Detail teknis",
+    lastAttempt: "Percobaan terakhir: {time}",
     cancelled: "Instalasi dibatalkan. Anda dapat mencoba lagi.",
     scope:
       "Chat teks dan gambar di GPU NVIDIA. Pemuatan pertama mungkin memakan waktu lebih lama.",
@@ -977,7 +979,6 @@ export const id = {
     copy: "Salin",
     addScheduledTask: "Tambahkan tugas terjadwal…",
     compact: "Padatkan percakapan",
-    compactQueued: "Pemadatan diminta untuk pesan berikutnya",
     compactEmpty: "Belum ada yang dapat dipadatkan",
     compactUnsupported:
       "Pemadatan memerlukan model GGUF atau MLX yang mendukung alat",
@@ -3354,6 +3355,7 @@ export const id = {
       groups: {
         replies: { title: "Balasan" },
         thinkingTools: { title: "Penalaran dan alat" },
+        customization: { title: "Kustomisasi" },
         conversations: {
           title: "Percakapan",
         },
@@ -3405,6 +3407,10 @@ export const id = {
         fitOnDeviceOnly: "Hanya tampilkan model yang muat",
         fitOnDeviceOnlyDescription:
           "Sembunyikan model yang terlalu besar untuk memori GPU dan RAM perangkat ini di pemilih model dan Hub. Model yang sudah diunduh tetap terlihat.",
+        pickerExpandLoaded: "Tampilkan daftar model lengkap",
+        pickerExpandLoadedDescription: "Buka pemilih model pada daftar lengkap saat model dimuat, bukan hanya model yang dimuat. Membuka atau menutup pemilih juga mengubah pengaturan ini.",
+        pickerMonochromeIcons: "Ikon model monokrom",
+        pickerMonochromeIconsDescription: "Tampilkan logo model dan penyedia dalam hitam, putih, dan abu-abu di pemilih model.",
       },
       menu: {
         title: "Menu chat",

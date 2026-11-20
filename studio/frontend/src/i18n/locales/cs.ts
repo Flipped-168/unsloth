@@ -179,6 +179,7 @@ export const cs = {
       add: "Přidat",
       cancel: "Zrušit",
       removeSite: "Odebrat {site}",
+      hostOnly: "Pouze tento hostitel, ne jeho subdomény",
       permissionsNote:
         "Zobrazují se zde jen weby s vlastními oprávněními. Akce jsou přihlášení, odeslání formulářů a tlačítka, která nakupují, odesílají nebo mažou.",
       siteInvalid: "Zadejte web, například example.com nebo *.example.com.",
@@ -806,6 +807,7 @@ export const cs = {
     failed:
       "Instalace modulu se nezdařila. Zkuste to znovu nebo použijte výchozí modul.",
     details: "Technické podrobnosti",
+    lastAttempt: "Poslední pokus: {time}",
     cancelled: "Instalace byla zrušena. Můžete to zkusit znovu.",
     scope:
       "Textový a obrázkový chat na GPU NVIDIA. První načtení může trvat déle.",
@@ -979,7 +981,6 @@ export const cs = {
     copy: "Kopírovat",
     addScheduledTask: "Přidat naplánovanou úlohu…",
     compact: "Zkomprimovat konverzaci",
-    compactQueued: "Komprimace byla vyžádána pro další zprávu",
     compactEmpty: "Zatím není co komprimovat",
     compactUnsupported:
       "Komprimace vyžaduje model GGUF nebo MLX s podporou nástrojů",
@@ -3370,6 +3371,7 @@ export const cs = {
       groups: {
         replies: { title: "Odpovědi" },
         thinkingTools: { title: "Přemýšlení a nástroje" },
+        customization: { title: "Přizpůsobení" },
         conversations: {
           title: "Konverzace",
         },
@@ -3421,6 +3423,10 @@ export const cs = {
         fitOnDeviceOnly: "Zobrazovat jen modely, které se vejdou",
         fitOnDeviceOnlyDescription:
           "Ve výběru modelu a v centru modelů skrýt modely, které jsou pro paměť GPU a RAM tohoto zařízení příliš velké. Stažené modely zůstanou viditelné.",
+        pickerExpandLoaded: "Zobrazit celý seznam modelů",
+        pickerExpandLoadedDescription: "Při načteném modelu otevírat výběr modelu na celém seznamu místo jen načteného modelu. Rozbalení nebo sbalení výběru toto nastavení také změní.",
+        pickerMonochromeIcons: "Jednobarevné ikony modelů",
+        pickerMonochromeIconsDescription: "Zobrazovat loga modelů a poskytovatelů ve výběru modelu černě, bíle a šedě.",
       },
       menu: {
         title: "Nabídka chatu",

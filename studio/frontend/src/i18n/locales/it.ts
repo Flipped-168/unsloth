@@ -170,6 +170,7 @@ export const it = {
       add: "Aggiungi",
       cancel: "Annulla",
       removeSite: "Rimuovi {site}",
+      hostOnly: "Solo questo host, non i suoi sottodomini",
       permissionsNote: "Qui compaiono solo i siti con autorizzazioni proprie. Le azioni sono accessi, invii di moduli e pulsanti che acquistano, inviano o eliminano.",
       siteInvalid: "Inserisci un sito come example.com o *.example.com.",
     },
@@ -729,6 +730,7 @@ export const it = {
     background: "L'installazione avviene in background.",
     failed: "Installazione del motore non riuscita. Riprova o usa il motore predefinito.",
     details: "Dettagli tecnici",
+    lastAttempt: "Ultimo tentativo: {time}",
     cancelled: "Installazione annullata. Puoi riprovare.",
     scope: "Chat di testo e immagini su GPU NVIDIA. Il primo caricamento può richiedere più tempo.",
   },
@@ -3037,6 +3039,7 @@ export const it = {
       groups: {
         replies: { title: "Risposte" },
         thinkingTools: { title: "Ragionamento e strumenti" },
+        customization: { title: "Personalizzazione" },
         conversations: { title: "Conversazioni" },
         files: { title: "File e incolla" },
         display: { title: "Visualizzazione" },
@@ -3075,6 +3078,10 @@ export const it = {
         fitOnDeviceOnly: "Mostra solo i modelli compatibili",
         fitOnDeviceOnlyDescription:
           "Nasconde nel selettore dei modelli e nell'Hub i modelli troppo grandi per la memoria GPU e la RAM di questo dispositivo. I modelli scaricati restano visibili.",
+        pickerExpandLoaded: "Mostra l'elenco completo dei modelli",
+        pickerExpandLoadedDescription: "Apre il selettore dei modelli sull'elenco completo quando un modello è caricato, invece che solo sul modello caricato. Espandere o comprimere il selettore cambia anche questa impostazione.",
+        pickerMonochromeIcons: "Icone dei modelli monocromatiche",
+        pickerMonochromeIconsDescription: "Mostra i loghi di modelli e fornitori in nero, bianco e grigio nel selettore dei modelli.",
       },
       menu: {
         title: "Menu della chat",
@@ -3948,7 +3955,6 @@ export const it = {
     copy: "Copia",
     addScheduledTask: "Aggiungi attività pianificata…",
     compact: "Compatta conversazione",
-    compactQueued: "Compattazione richiesta per il prossimo messaggio",
     compactEmpty: "Ancora niente da compattare",
     compactUnsupported: "La compattazione richiede un modello GGUF o MLX con supporto per gli strumenti",
   },

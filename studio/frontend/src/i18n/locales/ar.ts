@@ -173,6 +173,7 @@ export const ar = {
       add: "إضافة",
       cancel: "إلغاء",
       removeSite: "إزالة {site}",
+      hostOnly: "هذا المضيف فقط، دون نطاقاته الفرعية",
       permissionsNote: "تظهر هنا فقط المواقع التي لها أذونات خاصة. الإجراءات هي تسجيل الدخول وإرسال النماذج والأزرار التي تشتري أو ترسل أو تحذف.",
       siteInvalid: "أدخل موقعًا مثل example.com أو *.example.com.",
     },
@@ -732,6 +733,7 @@ export const ar = {
     background: "يُثبَّت في الخلفية.",
     failed: "فشل تثبيت المحرك. أعد المحاولة أو استخدم المحرك الافتراضي.",
     details: "التفاصيل التقنية",
+    lastAttempt: "آخر محاولة: {time}",
     cancelled: "تم إلغاء التثبيت. يمكنك إعادة المحاولة.",
     scope: "محادثة نصية وبالصور على وحدات NVIDIA GPU. قد يستغرق التحميل الأول وقتًا أطول.",
   },
@@ -881,7 +883,6 @@ export const ar = {
     copy: "نسخ",
     addScheduledTask: "إضافة مهمة مجدولة…",
     compact: "ضغط المحادثة",
-    compactQueued: "تم طلب ضغط المحادثة للرسالة التالية",
     compactEmpty: "لا يوجد ما يمكن ضغطه بعد",
     compactUnsupported: "ضغط المحادثة يتطلب نموذج GGUF أو MLX يدعم الأدوات",
   },
@@ -3120,6 +3121,7 @@ export const ar = {
       groups: {
         replies: { title: "الردود" },
         thinkingTools: { title: "التفكير والأدوات" },
+        customization: { title: "التخصيص" },
         conversations: { title: "المحادثات" },
         files: { title: "الملفات واللصق" },
         display: { title: "العرض" },
@@ -3159,6 +3161,10 @@ export const ar = {
         fitOnDeviceOnly: "إظهار النماذج المناسبة فقط",
         fitOnDeviceOnlyDescription:
           "إخفاء النماذج الأكبر من ذاكرة GPU وذاكرة RAM في هذا الجهاز في منتقي النماذج وفي Hub. تبقى النماذج المُنزَّلة ظاهرة.",
+        pickerExpandLoaded: "عرض قائمة النماذج الكاملة",
+        pickerExpandLoadedDescription: "افتح منتقي النماذج على القائمة الكاملة أثناء تحميل نموذج، بدلًا من النموذج المحمّل فقط. يؤدي توسيع المنتقي أو طيّه إلى تغيير هذا الإعداد أيضًا.",
+        pickerMonochromeIcons: "أيقونات نماذج أحادية اللون",
+        pickerMonochromeIconsDescription: "اعرض شعارات النماذج والمزوّدين بالأسود والأبيض والرمادي في منتقي النماذج.",
       },
       menu: {
         title: "قائمة المحادثة",

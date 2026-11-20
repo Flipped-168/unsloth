@@ -173,6 +173,7 @@ export const ko = {
       add: "추가",
       cancel: "취소",
       removeSite: "{site} 삭제",
+      hostOnly: "이 호스트만 해당 (하위 도메인 제외)",
       permissionsNote: "별도 권한이 있는 사이트만 여기에 표시됩니다. 작업이란 로그인, 양식 제출, 구매·전송·삭제를 하는 버튼을 말합니다.",
       siteInvalid: "example.com 또는 *.example.com 같은 사이트를 입력하세요.",
     },
@@ -732,6 +733,7 @@ export const ko = {
     background: "백그라운드에서 설치합니다.",
     failed: "엔진 설치에 실패했습니다. 다시 시도하거나 기본 엔진을 사용하세요.",
     details: "기술 세부 정보",
+    lastAttempt: "마지막 시도: {time}",
     cancelled: "설치가 취소되었습니다. 다시 시도할 수 있습니다.",
     scope: "NVIDIA GPU에서 텍스트 및 이미지 채팅을 지원합니다. 첫 로드는 시간이 더 걸릴 수 있습니다.",
   },
@@ -881,7 +883,6 @@ export const ko = {
     copy: "복사",
     addScheduledTask: "예약 작업 추가…",
     compact: "대화 압축",
-    compactQueued: "다음 메시지에 대한 대화 압축을 요청했습니다",
     compactEmpty: "아직 압축할 내용이 없습니다",
     compactUnsupported: "대화 압축에는 도구를 지원하는 GGUF 또는 MLX 모델이 필요합니다",
   },
@@ -3113,6 +3114,7 @@ export const ko = {
       groups: {
         replies: { title: "응답" },
         thinkingTools: { title: "생각과 도구" },
+        customization: { title: "사용자 지정" },
         conversations: { title: "대화" },
         files: { title: "파일 및 붙여넣기" },
         display: { title: "표시" },
@@ -3150,6 +3152,10 @@ export const ko = {
         fitOnDeviceOnly: "맞는 모델만 표시",
         fitOnDeviceOnlyDescription:
           "이 기기의 GPU 메모리와 RAM보다 큰 모델을 모델 선택기와 Hub에서 숨깁니다. 다운로드한 모델은 계속 표시됩니다.",
+        pickerExpandLoaded: "전체 모델 목록 표시",
+        pickerExpandLoadedDescription: "모델이 로드되어 있을 때 로드된 모델만이 아니라 전체 목록으로 모델 선택기를 엽니다. 선택기를 펼치거나 접으면 이 설정도 바뀝니다.",
+        pickerMonochromeIcons: "단색 모델 아이콘",
+        pickerMonochromeIconsDescription: "모델 선택기에서 모델 및 제공자 로고를 검정, 흰색, 회색으로 표시합니다.",
       },
       menu: {
         title: "채팅 메뉴",

@@ -174,6 +174,7 @@ export const he = {
       add: "הוספה",
       cancel: "ביטול",
       removeSite: "הסרת {site}",
+      hostOnly: "המארח הזה בלבד, לא תת-הדומיינים שלו",
       permissionsNote: "כאן מופיעים רק אתרים עם הרשאות משלהם. פעולות הן התחברויות, שליחת טפסים ולחצנים שקונים, שולחים או מוחקים.",
       siteInvalid: "יש להזין אתר כמו example.com או *.example.com.",
     },
@@ -759,6 +760,7 @@ export const he = {
     background: "ההתקנה פועלת ברקע.",
     failed: "התקנת המנוע נכשלה. נסה שוב או השתמש במנוע ברירת המחדל.",
     details: "פרטים טכניים",
+    lastAttempt: "ניסיון אחרון: {time}",
     cancelled: "ההתקנה בוטלה. אפשר לנסות שוב.",
     scope:
       "צ'אט טקסט ותמונות על GPUs של NVIDIA. הטעינה הראשונה עשויה להימשך זמן רב יותר.",
@@ -919,7 +921,6 @@ export const he = {
     copy: "העתקה",
     addScheduledTask: "הוספת משימה מתוזמנת…",
     compact: "כווץ שיחה",
-    compactQueued: "התבקש כיווץ שיחה עבור ההודעה הבאה",
     compactEmpty: "אין עדיין מה לכווץ",
     compactUnsupported: "כיווץ שיחה דורש מודל GGUF או MLX עם תמיכה בכלים",
   },
@@ -3191,6 +3192,7 @@ export const he = {
       groups: {
         replies: { title: "תשובות" },
         thinkingTools: { title: "חשיבה וכלים" },
+        customization: { title: "התאמה אישית" },
         conversations: {
           title: "שיחות",
         },
@@ -3240,6 +3242,10 @@ export const he = {
         fitOnDeviceOnly: "הצג רק מודלים שמתאימים",
         fitOnDeviceOnlyDescription:
           "הסתר בבורר המודלים וב-Hub מודלים גדולים מדי לזיכרון ה-GPU וה-RAM של מכשיר זה. מודלים שהורדו נשארים גלויים.",
+        pickerExpandLoaded: "הצג את רשימת המודלים המלאה",
+        pickerExpandLoadedDescription: "פתח את בורר המודלים על הרשימה המלאה כשמודל טעון, במקום רק המודל הטעון. הרחבה או כיווץ של הבורר משנים גם את ההגדרה הזו.",
+        pickerMonochromeIcons: "סמלי מודלים בצבע אחד",
+        pickerMonochromeIconsDescription: "הצג לוגו של מודלים וספקים בשחור, לבן ואפור בבורר המודלים.",
       },
       menu: {
         title: "תפריט צ'אט",

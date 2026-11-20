@@ -173,6 +173,7 @@ export const zhCN = {
       add: "添加",
       cancel: "取消",
       removeSite: "移除 {site}",
+      hostOnly: "仅此主机，不含其子域名",
       permissionsNote: "这里只显示有单独权限的网站。操作指登录、提交表单，以及购买、发送或删除的按钮。",
       siteInvalid: "请输入网站，例如 example.com 或 *.example.com。",
     },
@@ -732,6 +733,7 @@ export const zhCN = {
     background: "在后台安装。",
     failed: "引擎安装失败。请重试或使用默认引擎。",
     details: "技术详情",
+    lastAttempt: "上次尝试：{time}",
     cancelled: "安装已取消。你可以重试。",
     scope: "在 NVIDIA GPU 上进行文本和图像聊天。首次加载可能需要更长时间。",
   },
@@ -881,7 +883,6 @@ export const zhCN = {
     copy: "复制",
     addScheduledTask: "添加定时任务…",
     compact: "压缩对话",
-    compactQueued: "已请求在下一条消息时压缩对话",
     compactEmpty: "暂无可压缩的内容",
     compactUnsupported: "对话压缩需要支持工具调用的 GGUF 或 MLX 模型",
   },
@@ -3079,6 +3080,7 @@ export const zhCN = {
       groups: {
         replies: { title: "回复" },
         thinkingTools: { title: "思考与工具" },
+        customization: { title: "自定义" },
         conversations: { title: "对话" },
         files: { title: "文件与粘贴" },
         display: { title: "显示" },
@@ -3115,6 +3117,10 @@ export const zhCN = {
         fitOnDeviceOnly: "仅显示可运行的模型",
         fitOnDeviceOnlyDescription:
           "在模型选择器和 Hub 中隐藏超出本设备显存和内存容量的模型。已下载的模型仍会显示。",
+        pickerExpandLoaded: "显示完整模型列表",
+        pickerExpandLoadedDescription: "加载模型后，模型选择器打开时显示完整列表，而不是只显示已加载的模型。展开或收起选择器也会更改此设置。",
+        pickerMonochromeIcons: "单色模型图标",
+        pickerMonochromeIconsDescription: "在模型选择器中以黑、白、灰显示模型和提供商标志。",
       },
       menu: {
         title: "聊天菜单",
