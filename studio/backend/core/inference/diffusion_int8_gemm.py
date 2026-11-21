@@ -18,6 +18,7 @@ import types
 from functools import lru_cache
 from typing import Any, Optional
 from .rocm_bf16 import is_rocm_torch
+from .triton_closure_globals import publishes_closure_globals
 
 INT8_GEMM_ENV = "UNSLOTH_DIFFUSION_INT8_GEMM"
 INT8_GEMM_CONVROT_ENV = "UNSLOTH_DIFFUSION_INT8_GEMM_CONVROT"
@@ -228,6 +229,7 @@ def arch_config(capability: Optional[tuple], mode: Optional[str] = None) -> Opti
 
 
 @lru_cache(maxsize = 1)
+@publishes_closure_globals
 def _kernels() -> Optional[types.SimpleNamespace]:
     try:
         import triton
@@ -2457,8 +2459,13 @@ def start_early_probe_prewarm(
                 name = "unsloth-probe-prewarm-early",
                 daemon = True,
             )
+            # Start before releasing the lock: a joiner that sees the entry must find a started thread
+            # (``join()`` on an unstarted one raises and would return before the warm-up ran).
+            try:
+                thread.start()
+            except Exception:  # noqa: BLE001
+                return False
             _EARLY_PREWARM[index] = thread
-        thread.start()
         return True
     except Exception:  # noqa: BLE001
         return False
