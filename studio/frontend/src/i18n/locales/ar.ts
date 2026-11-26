@@ -882,7 +882,7 @@ export const ar = {
   chatMenu: {
     more: "خيارات المحادثة",
     copy: "نسخ",
-    addScheduledTask: "إضافة مهمة مجدولة…",
+    addScheduledTask: "إضافة مهمة مجدولة",
     compact: "ضغط المحادثة",
     compactEmpty: "لا يوجد ما يمكن ضغطه بعد",
     compactUnsupported: "ضغط المحادثة يتطلب نموذج GGUF أو MLX يدعم الأدوات",
@@ -4128,8 +4128,8 @@ export const ar = {
       summary: {
         single: "التدريب على GPU واحدة",
         layerSplit: "يُقسَّم النموذج طبقة بطبقة على {count} GPU",
-        ddp: "النموذج يتسع في GPU واحدة: توازي البيانات على {count} GPU",
-        fsdp2: "النموذج أكبر من GPU واحدة: مجزأ على {count} GPU",
+        ddp: "كل GPU تدرّب نسخة كاملة: توازي البيانات على {count} GPU",
+        fsdp2: "الأوزان وحالة المُحسِّن مجزأة على {count} GPU",
         tp: "تُقسَّم كل طبقة على {count} GPU",
         pp: "تعمل الطبقات كـ {count} مراحل في خط أنابيب، مرحلة لكل GPU",
         cp: "يُقسَّم كل تسلسل على {count} GPU",
@@ -4140,7 +4140,7 @@ export const ar = {
         noGpu: "اختر وحدة GPU واحدة على الأقل.",
         singleNeedsOne: "وضع GPU واحدة يستخدم وحدة واحدة فقط. ألغِ تحديد البقية.",
         needsTwo: "يحتاج هذا الوضع إلى وحدتي GPU على الأقل.",
-        customSpec: "أدخل تخطيطًا، مثل dp=2,tp=2.",
+        customSpec: "أدخل تخطيطًا، مثل {example}.",
       },
     },
     preview: {
@@ -5039,6 +5039,7 @@ export const ar = {
     model: {
       label: "نموذج الترجمة",
       fast: "سريع",
+      balanced: "متوازن",
       quality: "أفضل جودة",
       chat: "نموذج الدردشة",
       recommended: "موصى به",
@@ -5060,13 +5061,14 @@ export const ar = {
       toneFormal: "رسمي",
       toneCasual: "غير رسمي",
       auto: "الترجمة أثناء الكتابة",
-      autoDescription: "تبدأ بعد تحميل النموذج. الكتابة لا تبدأ أي تنزيل أبدًا.",
+      autoDescription: "يبدأ تلقائيًا عند تحميل النموذج.",
       saveHistory: "حفظ السجل",
       saveHistoryDescription: "يُحفظ في هذا المتصفح فقط.",
       showPrompt: "إظهار الموجّه",
-      showPromptDescription: "اطّلع على التعليمات المرسلة إلى النموذج بنصّها.",
+      showPromptDescription: "اطّلع على التعليمات الدقيقة المرسلة إلى النموذج.",
     },
     history: {
+      notSaved: "لم تُحفظ في السجل: مساحة تخزين المتصفح ممتلئة.",
       title: "السجل",
       search: "البحث في السجل",
       empty: "تظهر ترجماتك هنا.",
@@ -6032,6 +6034,12 @@ export const ar = {
     maximize: "تكبير النافذة",
     restore: "استعادة حجم النافذة",
     close: "إغلاق النافذة",
+    mediaCodecs: {
+      title: "قد لا تعمل مقاطع الفيديو المُنشأة",
+      // {command}: an apt command line, never translated.
+      description: "يفتقد هذا النظام إلى أدوات فك ترميز الفيديو من GStreamer. ثبّتها باستخدام: {command}",
+      copy: "نسخ الأمر",
+    },
   },
   runtimeUpdate: {
     installAudio: "تثبيت بيئة تشغيل الصوت",
@@ -6126,7 +6134,6 @@ export const ar = {
     back: "رجوع",
     continue: "متابعة",
     skipSetup: "تخطي الإعداد",
-    outsideAgain: "انقر خارج النافذة مرة أخرى للإغلاق",
     getStarted: "ابدأ",
     progress: "الخطوة {current} من {total}",
     welcome: {

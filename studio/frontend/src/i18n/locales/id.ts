@@ -978,7 +978,7 @@ export const id = {
   chatMenu: {
     more: "Opsi chat",
     copy: "Salin",
-    addScheduledTask: "Tambahkan tugas terjadwal…",
+    addScheduledTask: "Tambahkan tugas terjadwal",
     compact: "Padatkan percakapan",
     compactEmpty: "Belum ada yang dapat dipadatkan",
     compactUnsupported:
@@ -4424,8 +4424,8 @@ export const id = {
       summary: {
         single: "Melatih di satu GPU",
         layerSplit: "Model dibagi per lapisan ke {count} GPU",
-        ddp: "Model muat di satu GPU: paralel data di {count} GPU",
-        fsdp2: "Model terlalu besar untuk satu GPU: di-shard ke {count} GPU",
+        ddp: "Setiap GPU melatih salinan penuh: paralel data di {count} GPU",
+        fsdp2: "Bobot dan status optimizer di-shard ke {count} GPU",
         tp: "Setiap lapisan dibagi ke {count} GPU",
         pp: "Lapisan berjalan sebagai {count} tahap pipeline, satu per GPU",
         cp: "Setiap urutan dibagi ke {count} GPU",
@@ -4436,7 +4436,7 @@ export const id = {
         noGpu: "Pilih setidaknya satu GPU.",
         singleNeedsOne: "Satu GPU memakai tepat satu GPU. Hapus centang yang lain.",
         needsTwo: "Mode ini memerlukan setidaknya dua GPU.",
-        customSpec: "Masukkan tata letak, misalnya dp=2,tp=2.",
+        customSpec: "Masukkan tata letak, misalnya {example}.",
       },
     },
     preview: {
@@ -5382,6 +5382,7 @@ export const id = {
     model: {
       label: "Model terjemahan",
       fast: "Cepat",
+      balanced: "Seimbang",
       quality: "Kualitas terbaik",
       chat: "Model chat",
       recommended: "Direkomendasikan",
@@ -5403,13 +5404,14 @@ export const id = {
       toneFormal: "Formal",
       toneCasual: "Santai",
       auto: "Terjemahkan saat mengetik",
-      autoDescription: "Dimulai setelah model dimuat. Mengetik tidak pernah memulai unduhan.",
+      autoDescription: "Mulai otomatis saat model dimuat.",
       saveHistory: "Simpan riwayat",
       saveHistoryDescription: "Hanya disimpan di browser ini.",
       showPrompt: "Tampilkan prompt",
       showPromptDescription: "Lihat instruksi persis yang dikirim ke model.",
     },
     history: {
+      notSaved: "Tidak disimpan ke Riwayat: penyimpanan browser penuh.",
       title: "Riwayat",
       search: "Cari riwayat",
       empty: "Terjemahan Anda muncul di sini.",
@@ -6439,6 +6441,12 @@ export const id = {
     maximize: "Maksimalkan jendela",
     restore: "Pulihkan jendela",
     close: "Tutup jendela",
+    mediaCodecs: {
+      title: "Video yang dibuat mungkin tidak dapat diputar",
+      // {command}: an apt command line, never translated.
+      description: "Sistem ini tidak memiliki dekoder video GStreamer. Instal dengan: {command}",
+      copy: "Salin perintah",
+    },
   },
   runtimeUpdate: {
     installAudio: "Instal runtime audio",
@@ -6535,7 +6543,6 @@ export const id = {
     back: "Kembali",
     continue: "Lanjutkan",
     skipSetup: "Lewati penyiapan",
-    outsideAgain: "Klik di luar sekali lagi untuk menutup",
     getStarted: "Mulai",
     progress: "Langkah {current} dari {total}",
     welcome: {

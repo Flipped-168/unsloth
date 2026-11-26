@@ -920,7 +920,7 @@ export const he = {
   chatMenu: {
     more: "אפשרויות צ'אט",
     copy: "העתקה",
-    addScheduledTask: "הוספת משימה מתוזמנת…",
+    addScheduledTask: "הוספת משימה מתוזמנת",
     compact: "כווץ שיחה",
     compactEmpty: "אין עדיין מה לכווץ",
     compactUnsupported: "כיווץ שיחה דורש מודל GGUF או MLX עם תמיכה בכלים",
@@ -4209,8 +4209,8 @@ export const he = {
       summary: {
         single: "אימון על GPU אחד",
         layerSplit: "המודל מפוצל שכבה אחר שכבה על {count} GPU",
-        ddp: "המודל נכנס ב-GPU אחד: מקביליות נתונים על {count} GPU",
-        fsdp2: "המודל גדול מדי ל-GPU אחד: מפוצל על {count} GPU",
+        ddp: "כל GPU מאמן עותק מלא: מקביליות נתונים על {count} GPU",
+        fsdp2: "המשקלים ומצב האופטימייזר מפוצלים על {count} GPU",
         tp: "כל שכבה מפוצלת על {count} GPU",
         pp: "השכבות רצות כ-{count} שלבי צנרת, אחד לכל GPU",
         cp: "כל רצף מפוצל על {count} GPU",
@@ -4221,7 +4221,7 @@ export const he = {
         noGpu: "בחרו לפחות GPU אחד.",
         singleNeedsOne: "GPU יחיד משתמש ב-GPU אחד בדיוק. בטלו את סימון האחרים.",
         needsTwo: "המצב הזה דורש לפחות שני מעבדי GPU.",
-        customSpec: "הזינו פריסה, למשל dp=2,tp=2.",
+        customSpec: "הזינו פריסה, למשל {example}.",
       },
     },
     preview: {
@@ -5121,6 +5121,7 @@ export const he = {
     model: {
       label: "מודל תרגום",
       fast: "מהיר",
+      balanced: "מאוזן",
       quality: "האיכות הטובה ביותר",
       chat: "מודל צ'אט",
       recommended: "מומלצים",
@@ -5142,13 +5143,14 @@ export const he = {
       toneFormal: "רשמי",
       toneCasual: "יומיומי",
       auto: "תרגום תוך כדי הקלדה",
-      autoDescription: "מתחיל לאחר שהמודל נטען. הקלדה לעולם לא מתחילה הורדה.",
+      autoDescription: "מתחיל אוטומטית כשהמודל נטען.",
       saveHistory: "שמירת היסטוריה",
       saveHistoryDescription: "נשמרת בדפדפן הזה בלבד.",
       showPrompt: "הצג פרומפט",
-      showPromptDescription: "הצג את ההוראות המדויקות שנשלחות למודל.",
+      showPromptDescription: "הצגת ההוראות המדויקות שנשלחות למודל.",
     },
     history: {
+      notSaved: "לא נשמר בהיסטוריה: האחסון של הדפדפן מלא.",
       title: "היסטוריה",
       search: "חיפוש בהיסטוריה",
       empty: "התרגומים שלך יופיעו כאן.",
@@ -6131,6 +6133,12 @@ export const he = {
     maximize: "הגדל חלון",
     restore: "שחזר גודל חלון",
     close: "סגור חלון",
+    mediaCodecs: {
+      title: "ייתכן שסרטונים שנוצרו לא יופעלו",
+      // {command}: an apt command line, never translated.
+      description: "חסרים במערכת זו מפענחי הווידאו של GStreamer. התקינו אותם באמצעות: {command}",
+      copy: "העתקת הפקודה",
+    },
   },
   runtimeUpdate: {
     installAudio: "התקן את סביבת זמן הריצה לשמע",
@@ -6225,7 +6233,6 @@ export const he = {
     back: "חזרה",
     continue: "המשך",
     skipSetup: "דילוג על ההגדרה",
-    outsideAgain: "יש ללחוץ שוב מחוץ לחלון כדי לסגור",
     getStarted: "מתחילים",
     progress: "שלב {current} מתוך {total}",
     welcome: {

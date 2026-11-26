@@ -882,7 +882,7 @@ export const ru = {
   chatMenu: {
     more: "Параметры чата",
     copy: "Копировать",
-    addScheduledTask: "Добавить запланированную задачу…",
+    addScheduledTask: "Добавить запланированную задачу",
     compact: "Сжать беседу",
     compactEmpty: "Пока нечего сжимать",
     compactUnsupported: "Для сжатия нужна модель GGUF или MLX с поддержкой инструментов",
@@ -4145,8 +4145,8 @@ export const ru = {
       summary: {
         single: "Обучение на одном GPU",
         layerSplit: "Модель разделена по слоям между GPU: {count}",
-        ddp: "Модель помещается в один GPU: параллелизм данных на GPU: {count}",
-        fsdp2: "Модель слишком велика для одного GPU: шардирована между GPU: {count}",
+        ddp: "Каждый GPU обучает полную копию: параллелизм данных на GPU: {count}",
+        fsdp2: "Веса и состояние оптимизатора шардированы между GPU: {count}",
         tp: "Каждый слой разделён между GPU: {count}",
         pp: "Слои работают как этапы конвейера ({count}), по одному на GPU",
         cp: "Каждая последовательность разделена между GPU: {count}",
@@ -4157,7 +4157,7 @@ export const ru = {
         noGpu: "Выберите хотя бы один GPU.",
         singleNeedsOne: "Режим «Один GPU» использует ровно один GPU. Снимите отметку с остальных.",
         needsTwo: "Для этого режима нужно не меньше двух GPU.",
-        customSpec: "Введите схему, например dp=2,tp=2.",
+        customSpec: "Введите схему, например {example}.",
       },
     },
     preview: {
@@ -5067,6 +5067,7 @@ export const ru = {
     model: {
       label: "Модель перевода",
       fast: "Быстрая",
+      balanced: "Сбалансированная",
       quality: "Лучшее качество",
       chat: "Модель чата",
       recommended: "Рекомендуемые",
@@ -5088,13 +5089,14 @@ export const ru = {
       toneFormal: "Официальный",
       toneCasual: "Разговорный",
       auto: "Переводить по мере ввода",
-      autoDescription: "Начинает работать после загрузки модели. Ввод текста никогда не запускает скачивание.",
+      autoDescription: "Запускается автоматически, когда модель загружена.",
       saveHistory: "Сохранять историю",
       saveHistoryDescription: "Хранится только в этом браузере.",
       showPrompt: "Показать промпт",
-      showPromptDescription: "Посмотрите точные инструкции, отправляемые модели.",
+      showPromptDescription: "Посмотреть точные инструкции, отправленные модели.",
     },
     history: {
+      notSaved: "Не сохранено в историю: хранилище браузера заполнено.",
       title: "История",
       search: "Поиск в истории",
       empty: "Здесь появятся ваши переводы.",
@@ -6060,6 +6062,12 @@ export const ru = {
     maximize: "Развернуть окно",
     restore: "Восстановить окно",
     close: "Закрыть окно",
+    mediaCodecs: {
+      title: "Созданные видео могут не воспроизводиться",
+      // {command}: an apt command line, never translated.
+      description: "В системе отсутствуют видеодекодеры GStreamer. Установите их командой: {command}",
+      copy: "Скопировать команду",
+    },
   },
   runtimeUpdate: {
     installAudio: "Установить среду выполнения для аудио",
@@ -6154,7 +6162,6 @@ export const ru = {
     back: "Назад",
     continue: "Далее",
     skipSetup: "Пропустить настройку",
-    outsideAgain: "Щёлкните снаружи ещё раз, чтобы закрыть",
     getStarted: "Начать",
     progress: "Шаг {current} из {total}",
     welcome: {

@@ -4018,7 +4018,7 @@ export const it = {
   chatMenu: {
     more: "Opzioni chat",
     copy: "Copia",
-    addScheduledTask: "Aggiungi attività pianificata…",
+    addScheduledTask: "Aggiungi attività pianificata",
     compact: "Compatta conversazione",
     compactEmpty: "Ancora niente da compattare",
     compactUnsupported: "La compattazione richiede un modello GGUF o MLX con supporto per gli strumenti",
@@ -4174,8 +4174,8 @@ export const it = {
       summary: {
         single: "Addestramento su una GPU",
         layerSplit: "Il modello è diviso layer per layer su {count} GPU",
-        ddp: "Il modello entra in una GPU: parallelismo dei dati su {count} GPU",
-        fsdp2: "Il modello è troppo grande per una GPU: suddiviso su {count} GPU",
+        ddp: "Ogni GPU addestra una copia completa: parallelismo dei dati su {count} GPU",
+        fsdp2: "Pesi e stato dell'ottimizzatore suddivisi su {count} GPU",
         tp: "Ogni layer è diviso su {count} GPU",
         pp: "I layer girano come {count} stadi di pipeline, uno per GPU",
         cp: "Ogni sequenza è divisa su {count} GPU",
@@ -4186,7 +4186,7 @@ export const it = {
         noGpu: "Seleziona almeno una GPU.",
         singleNeedsOne: "GPU singola usa esattamente una GPU. Deseleziona le altre.",
         needsTwo: "Questa modalità richiede almeno due GPU.",
-        customSpec: "Inserisci un layout, ad esempio dp=2,tp=2.",
+        customSpec: "Inserisci un layout, ad esempio {example}.",
       },
     },
     preview: {
@@ -5108,6 +5108,7 @@ export const it = {
     model: {
       label: "Modello di traduzione",
       fast: "Veloce",
+      balanced: "Bilanciato",
       quality: "Qualità migliore",
       chat: "Modello di chat",
       recommended: "Consigliati",
@@ -5129,13 +5130,14 @@ export const it = {
       toneFormal: "Formale",
       toneCasual: "Informale",
       auto: "Traduci mentre scrivi",
-      autoDescription: "Si avvia quando il modello è caricato. La digitazione non avvia mai un download.",
+      autoDescription: "Si avvia automaticamente quando il modello è caricato.",
       saveHistory: "Salva cronologia",
       saveHistoryDescription: "Conservata solo in questo browser.",
       showPrompt: "Mostra prompt",
-      showPromptDescription: "Visualizza le istruzioni esatte inviate al modello.",
+      showPromptDescription: "Vedi le istruzioni esatte inviate al modello.",
     },
     history: {
+      notSaved: "Non salvata nella cronologia: lo spazio di archiviazione del browser è pieno.",
       title: "Cronologia",
       search: "Cerca nella cronologia",
       empty: "Le tue traduzioni appaiono qui.",
@@ -6101,6 +6103,12 @@ export const it = {
     maximize: "Ingrandisci la finestra",
     restore: "Ripristina la finestra",
     close: "Chiudi la finestra",
+    mediaCodecs: {
+      title: "I video generati potrebbero non essere riprodotti",
+      // {command}: an apt command line, never translated.
+      description: "In questo sistema mancano i decoder video di GStreamer. Installali con: {command}",
+      copy: "Copia comando",
+    },
   },
   runtimeUpdate: {
     installAudio: "Installa il runtime audio",
@@ -6195,7 +6203,6 @@ export const it = {
     back: "Indietro",
     continue: "Continua",
     skipSetup: "Salta configurazione",
-    outsideAgain: "Fai di nuovo clic all'esterno per chiudere",
     getStarted: "Inizia",
     progress: "Passo {current} di {total}",
     welcome: {

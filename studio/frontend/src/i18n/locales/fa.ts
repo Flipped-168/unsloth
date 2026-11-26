@@ -976,7 +976,7 @@ export const fa = {
   chatMenu: {
     more: "گزینه‌های گفتگو",
     copy: "کپی",
-    addScheduledTask: "افزودن کار زمان‌بندی‌شده…",
+    addScheduledTask: "افزودن کار زمان‌بندی‌شده",
     compact: "فشرده‌سازی گفتگو",
     compactEmpty: "هنوز چیزی برای فشرده‌سازی وجود ندارد",
     compactUnsupported:
@@ -4412,8 +4412,8 @@ export const fa = {
       summary: {
         single: "آموزش روی یک GPU",
         layerSplit: "مدل لایه به لایه بین {count} GPU تقسیم می‌شود",
-        ddp: "مدل در یک GPU جا می‌شود: موازی‌سازی داده روی {count} GPU",
-        fsdp2: "مدل برای یک GPU بیش از حد بزرگ است: تکه‌تکه روی {count} GPU",
+        ddp: "هر GPU یک نسخهٔ کامل را آموزش می‌دهد: موازی‌سازی داده روی {count} GPU",
+        fsdp2: "وزن‌ها و وضعیت بهینه‌ساز تکه‌تکه روی {count} GPU",
         tp: "هر لایه بین {count} GPU تقسیم می‌شود",
         pp: "لایه‌ها به‌صورت {count} مرحله خط لوله اجرا می‌شوند، هر GPU یک مرحله",
         cp: "هر دنباله بین {count} GPU تقسیم می‌شود",
@@ -4424,7 +4424,7 @@ export const fa = {
         noGpu: "دست‌کم یک GPU انتخاب کنید.",
         singleNeedsOne: "حالت یک GPU دقیقاً از یک GPU استفاده می‌کند. تیک بقیه را بردارید.",
         needsTwo: "این حالت دست‌کم به دو GPU نیاز دارد.",
-        customSpec: "یک چیدمان وارد کنید، مثلاً dp=2,tp=2.",
+        customSpec: "یک چیدمان وارد کنید، مثلاً {example}.",
       },
     },
     preview: {
@@ -5354,6 +5354,7 @@ export const fa = {
     model: {
       label: "مدل ترجمه",
       fast: "سریع",
+      balanced: "متعادل",
       quality: "بهترین کیفیت",
       chat: "مدل گفتگو",
       recommended: "پیشنهادی",
@@ -5375,15 +5376,14 @@ export const fa = {
       toneFormal: "رسمی",
       toneCasual: "غیررسمی",
       auto: "ترجمه هنگام تایپ",
-      autoDescription:
-        "پس از بارگذاری مدل شروع می‌شود. تایپ کردن هرگز دانلودی را شروع نمی‌کند.",
+      autoDescription: "وقتی مدل بارگذاری شد، خودکار شروع می‌شود.",
       saveHistory: "ذخیرهٔ سابقه",
       saveHistoryDescription: "فقط در همین مرورگر نگهداری می‌شود.",
       showPrompt: "نمایش پرامپت",
-      showPromptDescription:
-        "دستورهای دقیقی را که برای مدل فرستاده می‌شود ببینید.",
+      showPromptDescription: "دستورالعمل‌های دقیق ارسال‌شده به مدل را ببینید.",
     },
     history: {
+      notSaved: "در تاریخچه ذخیره نشد: فضای ذخیره‌سازی مرورگر پر است.",
       title: "سابقه",
       search: "جستجوی سابقه",
       empty: "ترجمه‌های شما اینجا نمایش داده می‌شوند.",
@@ -6414,6 +6414,12 @@ export const fa = {
     maximize: "بزرگ کردن پنجره",
     restore: "بازگرداندن اندازهٔ پنجره",
     close: "بستن پنجره",
+    mediaCodecs: {
+      title: "ممکن است ویدیوهای تولیدشده پخش نشوند",
+      // {command}: an apt command line, never translated.
+      description: "رمزگشاهای ویدیوی GStreamer روی این سیستم نصب نیستند. آن‌ها را با این دستور نصب کنید: {command}",
+      copy: "کپی دستور",
+    },
   },
   runtimeUpdate: {
     installAudio: "نصب محیط اجرای صدا",
@@ -6509,7 +6515,6 @@ export const fa = {
     back: "بازگشت",
     continue: "ادامه",
     skipSetup: "رد شدن از راه‌اندازی",
-    outsideAgain: "برای بستن، دوباره بیرون کلیک کنید",
     getStarted: "شروع کنید",
     progress: "مرحلهٔ {current} از {total}",
     welcome: {
