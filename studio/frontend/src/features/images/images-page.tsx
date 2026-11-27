@@ -494,7 +494,15 @@ import {
   withEnhanceChoice,
 } from "./lib/prompt-enhance";
 import { EnhancedPromptRecipeRow, EnhancePromptControls } from "./prompt-enhance-panel";
-import { loraFuseLabel } from "./lib/lora-fuse";
+import {
+  LORA_FUSE_CONTROL_HINT,
+  LORA_FUSE_CONTROL_LABEL,
+  LORA_FUSE_OPTIONS,
+  loraFuseLabel,
+  loraFuseSelection,
+  type LoraFuseChoice,
+} from "./lib/lora-fuse";
+import { MULTI_GPU_BATCH_NOTE, multiGpuPlacementRow } from "@/lib/multi-gpu-placement";
 import {
   ENGINE_HINT,
   ENGINE_HINT_CPU_ONLY,
@@ -1591,6 +1599,7 @@ function LoadedBuildSummary({ status }: { status: DiffusionStatus | null }) {
   const offload = status.offload_policy ?? "none";
   const placement = offload === "group" ? denoiserPlacement(status.denoiser_offload) : null;
   const loraFuse = loraFuseLabel(status.lora_fuse);
+  const multiGpu = multiGpuPlacementRow(status.multi_gpu);
   return (
     <div className="flex flex-col gap-1 rounded-lg border border-border/60 px-2.5 py-2 text-ui-11">
       <div className="flex items-center gap-1 pb-0.5 text-xs font-medium text-muted-foreground">
@@ -1640,6 +1649,13 @@ function LoadedBuildSummary({ status }: { status: DiffusionStatus | null }) {
           label="Placement"
           value={placement.label}
           badge={<InfoHint>{placement.detail}</InfoHint>}
+        />
+      ) : null}
+      {multiGpu ? (
+        <BuildRow
+          label="Multi-GPU"
+          value={multiGpu.label}
+          badge={<InfoHint>{multiGpu.detail}</InfoHint>}
         />
       ) : null}
       {loraFuse ? (
@@ -1706,6 +1722,7 @@ type LoadAdvanced = Pick<
   | "text_encoder_quant"
   | "attention_backend"
   | "int8_attention"
+  | "lora_fuse"
   | "memory_mode"
   | "transformer_cache"
   | "family_override"
@@ -2126,6 +2143,7 @@ export function ImagesPage({
     "auto",
   );
   const [int8Attention, setInt8Attention] = useState<Int8AttentionChoice>("auto");
+  const [loraFuse, setLoraFuse] = useState<LoraFuseChoice>("auto");
   useEffect(() => {
     setTransformerQuant((v) => nvfp4SelectionFallback(v, nvfp4DiffusionKnown, nvfp4Diffusion));
     setTextEncoderQuant((v) => nvfp4SelectionFallback(v, nvfp4DiffusionKnown, nvfp4Diffusion));
@@ -3330,7 +3348,6 @@ export function ImagesPage({
           id: "",
           url: "",
           seed: settings.seed ?? 0,
-          batch_index: 0,
           created_at: 0,
           localized_edit:
             localized === "annotate" || localized === "paint" || localized === "mask" ? localized : null,
@@ -4072,6 +4089,7 @@ export function ImagesPage({
       setMemoryMode("auto");
       setAttentionBackend("auto");
       setInt8Attention("auto");
+      setLoraFuse("auto");
       return;
     }
     if (action !== "record" || !record) return;
@@ -4103,6 +4121,8 @@ export function ImagesPage({
     if (attention) setAttentionBackend(attention);
     const int8 = int8AttentionSelection(record.int8_attention);
     if (int8) setInt8Attention(int8);
+    const fuse = loraFuseSelection(record.lora_fuse);
+    if (fuse) setLoraFuse(fuse);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- resolvedKey stands for the record
   }, [resolvedKey, failedLoadReseed]);
 
@@ -4128,6 +4148,8 @@ export function ImagesPage({
         attention_backend: attentionBackend === "auto" ? undefined : attentionBackend,
         // Always sent: the backend reads "auto" as no per-load override.
         int8_attention: int8Attention,
+        // Only an explicit choice: auto leaves the env switch in charge, as on an older backend.
+        lora_fuse: loraFuse === "auto" ? undefined : loraFuse,
         memory_mode: memoryMode === "auto" ? undefined : memoryMode,
         transformer_cache: transformerCache === "auto" ? undefined : transformerCache,
         family_override: familyOverrideRequired ? explicitFamily(familyOverride) : undefined,
@@ -4152,6 +4174,7 @@ export function ImagesPage({
       textEncoderQuant,
       attentionBackend,
       int8Attention,
+      loraFuse,
       memoryMode,
       transformerCache,
       familyOverride,
@@ -4254,6 +4277,7 @@ export function ImagesPage({
           text_encoder_quant: advanced.text_encoder_quant,
           attention_backend: advanced.attention_backend,
           int8_attention: advanced.int8_attention,
+          lora_fuse: advanced.lora_fuse,
           memory_mode: advanced.memory_mode,
           transformer_cache: advanced.transformer_cache,
           family_override: advanced.family_override,
@@ -6557,7 +6581,7 @@ export function ImagesPage({
       {gpuChoices.length > 0 && (
         <AdvancedSelect
           label="GPU"
-          hint="Which card this model loads on. Auto starts on whichever device torch is pointing at, which on a mixed box is not necessarily the largest, and on a computer with several GPUs may put the text encoder, or a copy of the model for the guidance pass, on a second card. Picking a card keeps the whole model on that card. Multi-GPU means the cards inside this one computer: using two machines (for example two DGX Sparks) for one image is not part of this release."
+          hint={`Which card this model loads on. Auto starts on whichever device torch is pointing at, which on a mixed box is not necessarily the largest, and on a computer with several GPUs may put the text encoder, or a copy of the model for the guidance pass, on a second card. Picking a card keeps the whole model on that card. Multi-GPU means the cards inside this one computer: using two machines (for example two DGX Sparks) for one image is not part of this release. ${MULTI_GPU_BATCH_NOTE}`}
           value={selectedGpu}
           onValueChange={setSelectedGpu}
           options={[
@@ -7525,6 +7549,16 @@ export function ImagesPage({
                       Folders
                     </Button>
                   </div>
+                </div>
+                <div className="mt-2">
+                  <AdvancedSelect
+                    label={LORA_FUSE_CONTROL_LABEL}
+                    hint={LORA_FUSE_CONTROL_HINT}
+                    badge={<ResolvedBadge status={status} controlKey="lora_fuse" />}
+                    value={loraFuse}
+                    onValueChange={(v) => setLoraFuse(v as LoraFuseChoice)}
+                    options={LORA_FUSE_OPTIONS}
+                  />
                 </div>
                 <OnDeviceFoldersDialog
                   open={loraFoldersOpen}
